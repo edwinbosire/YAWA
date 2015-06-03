@@ -4,7 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Semibold.ttf">
@@ -38,7 +37,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zqq-QW-Dds">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zqq-QW-Dds" userLabel="Weekly forecast group">
                                 <rect key="frame" x="11" y="414" width="298" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cR2-SM-oC5">
@@ -211,7 +210,7 @@
                                     <constraint firstItem="cR2-SM-oC5" firstAttribute="leading" secondItem="9pt-fu-ANp" secondAttribute="trailing" constant="32" id="ygX-BV-jzJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umz-vi-H21">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umz-vi-H21" userLabel="Today weather detail group">
                                 <rect key="frame" x="8" y="349" width="305" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXh-bO-hQZ">
@@ -335,7 +334,7 @@
                                     <constraint firstItem="BdU-lk-ETt" firstAttribute="top" secondItem="76t-A9-gKy" secondAttribute="top" id="ywR-ze-qcM"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeg-Iw-MP5">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeg-Iw-MP5" userLabel="Todays weather header">
                                 <rect key="frame" x="20" y="72" width="280" height="104"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUESDAY, JUNE 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JhB-ip-Q0U">
@@ -365,8 +364,8 @@
                                     <constraint firstAttribute="height" constant="104" id="zub-gQ-kiJ"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999999999999991" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="82" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-14-tnj">
-                                <rect key="frame" x="10" y="169" width="300" height="172"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999999999999991" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="82" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-14-tnj" userLabel="temperatureLabel">
+                                <rect key="frame" x="60" y="102" width="200" height="239"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="175"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -374,11 +373,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="h9U-14-tnj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-6" id="0qD-Tt-CYi"/>
                             <constraint firstItem="h9U-14-tnj" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="6Mc-Kl-dFz"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Zqq-QW-Dds" secondAttribute="bottom" constant="14" id="NZ7-FK-A4G"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="umz-vi-H21" secondAttribute="bottom" constant="147" id="RCR-ov-KUd"/>
-                            <constraint firstItem="umz-vi-H21" firstAttribute="top" secondItem="h9U-14-tnj" secondAttribute="bottom" constant="5" id="SKn-0S-u8l"/>
+                            <constraint firstItem="umz-vi-H21" firstAttribute="top" secondItem="h9U-14-tnj" secondAttribute="bottom" constant="8" id="SKn-0S-u8l"/>
                             <constraint firstItem="umz-vi-H21" firstAttribute="top" secondItem="eeg-Iw-MP5" secondAttribute="bottom" constant="173" id="Y0b-Jf-AIM"/>
                             <constraint firstItem="h9U-14-tnj" firstAttribute="centerX" secondItem="Zqq-QW-Dds" secondAttribute="centerX" id="ikP-lb-M1v"/>
                             <constraint firstAttribute="centerX" secondItem="umz-vi-H21" secondAttribute="centerX" id="t0N-Tb-Qbx"/>
@@ -386,7 +384,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="na0-Mf-Xb8">
-                        <barButtonItem key="leftBarButtonItem" image="burgerButton" style="plain" id="WNT-bo-jCf">
+                        <barButtonItem key="leftBarButtonItem" image="burgerButton" id="WNT-bo-jCf">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="plusButton" id="ccm-5k-ro8">
