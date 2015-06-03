@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshData(self)
+//        refreshData(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,9 +69,6 @@ class ViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
                     self.presentViewController(networkIssueAlertController, animated: true, completion: nil)
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.hidden = true
-                    self.refreshButton.hidden = false
                 })
             }
         })
@@ -81,18 +78,14 @@ class ViewController: UIViewController {
     
     func populateScreenWithObject(currentWeather: Current) {
         
-        self.temperatureLabel.text = "\(currentWeather.temperature)"
-        self.weatherIcon.image = currentWeather.icon!
-        self.latestRefreshTime.text = "At \(currentWeather.currentTime!) it is"
-        self.humidityLabel.text = "\(currentWeather.humidity)"
-        self.precipitationLabel.text = "\(currentWeather.precipProbability)"
-        self.summaryLabel.text = "\(currentWeather.summary)"
-        
-        //Stop refresh animation
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.hidden = true
-        self.refreshButton.hidden = false
-
+//        self.temperatureLabel.text = "\(currentWeather.temperature)"
+//        self.weatherIcon.image = currentWeather.icon!
+//        self.latestRefreshTime.text = "At \(currentWeather.currentTime!) it is"
+//        self.humidityLabel.text = "\(currentWeather.humidity)"
+//        self.precipitationLabel.text = "\(currentWeather.precipProbability)"
+//        self.summaryLabel.text = "\(currentWeather.summary)"
+		
+		
     }
 }
 

@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		964F32211B1F9A33008A43BF /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F32201B1F9A33008A43BF /* UIColor+FlatColors.m */; };
+		964F32221B1F9A33008A43BF /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 964F32201B1F9A33008A43BF /* UIColor+FlatColors.m */; };
+		964F322E1B1F9C31008A43BF /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32241B1F9C31008A43BF /* OpenSans-Bold.ttf */; };
+		964F322F1B1F9C31008A43BF /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32241B1F9C31008A43BF /* OpenSans-Bold.ttf */; };
+		964F32301B1F9C31008A43BF /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32251B1F9C31008A43BF /* OpenSans-BoldItalic.ttf */; };
+		964F32311B1F9C31008A43BF /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32251B1F9C31008A43BF /* OpenSans-BoldItalic.ttf */; };
+		964F32321B1F9C31008A43BF /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32261B1F9C31008A43BF /* OpenSans-ExtraBold.ttf */; };
+		964F32331B1F9C31008A43BF /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32261B1F9C31008A43BF /* OpenSans-ExtraBold.ttf */; };
+		964F32341B1F9C31008A43BF /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32271B1F9C31008A43BF /* OpenSans-ExtraBoldItalic.ttf */; };
+		964F32351B1F9C31008A43BF /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32271B1F9C31008A43BF /* OpenSans-ExtraBoldItalic.ttf */; };
+		964F32361B1F9C31008A43BF /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32281B1F9C31008A43BF /* OpenSans-Italic.ttf */; };
+		964F32371B1F9C31008A43BF /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32281B1F9C31008A43BF /* OpenSans-Italic.ttf */; };
+		964F32381B1F9C31008A43BF /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32291B1F9C31008A43BF /* OpenSans-Light.ttf */; };
+		964F32391B1F9C31008A43BF /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F32291B1F9C31008A43BF /* OpenSans-Light.ttf */; };
+		964F323A1B1F9C31008A43BF /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F322A1B1F9C31008A43BF /* OpenSans-LightItalic.ttf */; };
+		964F323B1B1F9C31008A43BF /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F322A1B1F9C31008A43BF /* OpenSans-LightItalic.ttf */; };
+		964F323C1B1F9C31008A43BF /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F322B1B1F9C31008A43BF /* OpenSans-Regular.ttf */; };
+		964F323D1B1F9C31008A43BF /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F322B1B1F9C31008A43BF /* OpenSans-Regular.ttf */; };
+		964F323E1B1F9C31008A43BF /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F322C1B1F9C31008A43BF /* OpenSans-Semibold.ttf */; };
+		964F323F1B1F9C31008A43BF /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F322C1B1F9C31008A43BF /* OpenSans-Semibold.ttf */; };
+		964F32401B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F322D1B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf */; };
+		964F32411B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F322D1B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf */; };
+		964F32441B1F9D60008A43BF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F32431B1F9D60008A43BF /* NavigationController.swift */; };
+		964F32451B1F9D60008A43BF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F32431B1F9D60008A43BF /* NavigationController.swift */; };
 		96DC24051B091D5E003FF892 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC24041B091D5E003FF892 /* AppDelegate.swift */; };
 		96DC24071B091D5E003FF892 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC24061B091D5E003FF892 /* ViewController.swift */; };
 		96DC240A1B091D5E003FF892 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC24081B091D5E003FF892 /* Main.storyboard */; };
@@ -30,6 +54,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		964F321D1B1F9A31008A43BF /* YAWA-Weather-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YAWA-Weather-Bridging-Header.h"; sourceTree = "<group>"; };
+		964F321E1B1F9A32008A43BF /* YAWA-WeatherTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YAWA-WeatherTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		964F321F1B1F9A33008A43BF /* UIColor+FlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+FlatColors.h"; path = "Utilities/UIColor+FlatColors.h"; sourceTree = "<group>"; };
+		964F32201B1F9A33008A43BF /* UIColor+FlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+FlatColors.m"; path = "Utilities/UIColor+FlatColors.m"; sourceTree = "<group>"; };
+		964F32241B1F9C31008A43BF /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "Assets/Open Sans/OpenSans-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+		964F32251B1F9C31008A43BF /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-BoldItalic.ttf"; path = "Assets/Open Sans/OpenSans-BoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		964F32261B1F9C31008A43BF /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "Assets/Open Sans/OpenSans-ExtraBold.ttf"; sourceTree = SOURCE_ROOT; };
+		964F32271B1F9C31008A43BF /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBoldItalic.ttf"; path = "Assets/Open Sans/OpenSans-ExtraBoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		964F32281B1F9C31008A43BF /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "Assets/Open Sans/OpenSans-Italic.ttf"; sourceTree = SOURCE_ROOT; };
+		964F32291B1F9C31008A43BF /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "Assets/Open Sans/OpenSans-Light.ttf"; sourceTree = SOURCE_ROOT; };
+		964F322A1B1F9C31008A43BF /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "Assets/Open Sans/OpenSans-LightItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		964F322B1B1F9C31008A43BF /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Assets/Open Sans/OpenSans-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		964F322C1B1F9C31008A43BF /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "Assets/Open Sans/OpenSans-Semibold.ttf"; sourceTree = SOURCE_ROOT; };
+		964F322D1B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "Assets/Open Sans/OpenSans-SemiboldItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		964F32431B1F9D60008A43BF /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		96DC23FF1B091D5E003FF892 /* YAWA-Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YAWA-Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DC24031B091D5E003FF892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96DC24041B091D5E003FF892 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +103,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		964F32231B1F9A3A008A43BF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				964F321F1B1F9A33008A43BF /* UIColor+FlatColors.h */,
+				964F32201B1F9A33008A43BF /* UIColor+FlatColors.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		964F32421B1F9C3A008A43BF /* Fonts - Open Sans */ = {
+			isa = PBXGroup;
+			children = (
+				964F32241B1F9C31008A43BF /* OpenSans-Bold.ttf */,
+				964F32251B1F9C31008A43BF /* OpenSans-BoldItalic.ttf */,
+				964F32261B1F9C31008A43BF /* OpenSans-ExtraBold.ttf */,
+				964F32271B1F9C31008A43BF /* OpenSans-ExtraBoldItalic.ttf */,
+				964F32281B1F9C31008A43BF /* OpenSans-Italic.ttf */,
+				964F32291B1F9C31008A43BF /* OpenSans-Light.ttf */,
+				964F322A1B1F9C31008A43BF /* OpenSans-LightItalic.ttf */,
+				964F322B1B1F9C31008A43BF /* OpenSans-Regular.ttf */,
+				964F322C1B1F9C31008A43BF /* OpenSans-Semibold.ttf */,
+				964F322D1B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf */,
+			);
+			name = "Fonts - Open Sans";
+			sourceTree = "<group>";
+		};
 		96DC23F61B091D5E003FF892 = {
 			isa = PBXGroup;
 			children = (
@@ -91,7 +156,10 @@
 				96DC24271B091E7A003FF892 /* Model */,
 				96DC24281B091E87003FF892 /* View */,
 				96DC240B1B091D5E003FF892 /* Images.xcassets */,
+				964F32231B1F9A3A008A43BF /* Utilities */,
 				96DC24021B091D5E003FF892 /* Supporting Files */,
+				964F321D1B1F9A31008A43BF /* YAWA-Weather-Bridging-Header.h */,
+				964F321E1B1F9A32008A43BF /* YAWA-WeatherTests-Bridging-Header.h */,
 			);
 			path = "YAWA-Weather";
 			sourceTree = "<group>";
@@ -99,6 +167,7 @@
 		96DC24021B091D5E003FF892 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				964F32421B1F9C3A008A43BF /* Fonts - Open Sans */,
 				96DC24031B091D5E003FF892 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -125,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				96DC24061B091D5E003FF892 /* ViewController.swift */,
+				964F32431B1F9D60008A43BF /* NavigationController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -228,9 +298,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				964F323E1B1F9C31008A43BF /* OpenSans-Semibold.ttf in Resources */,
+				964F32401B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf in Resources */,
 				96DC240A1B091D5E003FF892 /* Main.storyboard in Resources */,
+				964F323C1B1F9C31008A43BF /* OpenSans-Regular.ttf in Resources */,
+				964F32361B1F9C31008A43BF /* OpenSans-Italic.ttf in Resources */,
+				964F32341B1F9C31008A43BF /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				96DC240F1B091D5E003FF892 /* LaunchScreen.xib in Resources */,
+				964F323A1B1F9C31008A43BF /* OpenSans-LightItalic.ttf in Resources */,
+				964F322E1B1F9C31008A43BF /* OpenSans-Bold.ttf in Resources */,
 				96DC240C1B091D5E003FF892 /* Images.xcassets in Resources */,
+				964F32381B1F9C31008A43BF /* OpenSans-Light.ttf in Resources */,
+				964F32301B1F9C31008A43BF /* OpenSans-BoldItalic.ttf in Resources */,
+				964F32321B1F9C31008A43BF /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +318,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				964F32391B1F9C31008A43BF /* OpenSans-Light.ttf in Resources */,
+				964F32311B1F9C31008A43BF /* OpenSans-BoldItalic.ttf in Resources */,
+				964F323B1B1F9C31008A43BF /* OpenSans-LightItalic.ttf in Resources */,
+				964F323F1B1F9C31008A43BF /* OpenSans-Semibold.ttf in Resources */,
+				964F322F1B1F9C31008A43BF /* OpenSans-Bold.ttf in Resources */,
+				964F32331B1F9C31008A43BF /* OpenSans-ExtraBold.ttf in Resources */,
+				964F32411B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf in Resources */,
+				964F32371B1F9C31008A43BF /* OpenSans-Italic.ttf in Resources */,
+				964F323D1B1F9C31008A43BF /* OpenSans-Regular.ttf in Resources */,
+				964F32351B1F9C31008A43BF /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,8 +339,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				96DC242C1B094420003FF892 /* Weekly.swift in Sources */,
+				964F32441B1F9D60008A43BF /* NavigationController.swift in Sources */,
 				96DC24261B091E74003FF892 /* Current.swift in Sources */,
 				96DC24071B091D5E003FF892 /* ViewController.swift in Sources */,
+				964F32211B1F9A33008A43BF /* UIColor+FlatColors.m in Sources */,
 				96DC24051B091D5E003FF892 /* AppDelegate.swift in Sources */,
 				96DC242A1B092AE3003FF892 /* Constants.swift in Sources */,
 				96DC242E1B094431003FF892 /* Daily.swift in Sources */,
@@ -261,6 +353,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				964F32221B1F9A33008A43BF /* UIColor+FlatColors.m in Sources */,
+				964F32451B1F9D60008A43BF /* NavigationController.swift in Sources */,
 				96DC241B1B091D5F003FF892 /* YAWA_WeatherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,9 +474,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "YAWA-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YAWA-Weather/YAWA-Weather-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -390,9 +487,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "YAWA-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YAWA-Weather/YAWA-Weather-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -400,6 +499,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -411,6 +511,8 @@
 				INFOPLIST_FILE = "YAWA-WeatherTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YAWA-Weather/YAWA-WeatherTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YAWA-Weather.app/YAWA-Weather";
 			};
 			name = Debug;
@@ -419,6 +521,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -426,6 +529,7 @@
 				INFOPLIST_FILE = "YAWA-WeatherTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YAWA-Weather/YAWA-WeatherTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YAWA-Weather.app/YAWA-Weather";
 			};
 			name = Release;
@@ -449,6 +553,7 @@
 				96DC24201B091D5F003FF892 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96DC24211B091D5F003FF892 /* Build configuration list for PBXNativeTarget "YAWA-WeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -457,6 +562,7 @@
 				96DC24231B091D5F003FF892 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
