@@ -13,23 +13,21 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationBar.setBackgroundImage(UIImage.new(), forBarMetrics: .Default)
+		self.navigationBar.shadowImage = UIImage.new()
+		self.navigationBar.translucent = true
+		
+		var navigationBarAppearance = UINavigationBar.appearance()
+		navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor(),
+			NSFontAttributeName : UIFont(name: "Open Sans", size: 16.0)!]
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+extension UINavigationBar {
+	public override func sizeThatFits(size: CGSize) -> CGSize {
+		var newsize: CGSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width, 60)
+		return newsize
+	}
+}
+

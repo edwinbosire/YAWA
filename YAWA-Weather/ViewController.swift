@@ -22,7 +22,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
+		self.title = "GREENWICH, LONDON"
 //        refreshData(self)
     }
 
