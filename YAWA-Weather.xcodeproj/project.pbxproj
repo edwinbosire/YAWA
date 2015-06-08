@@ -31,6 +31,9 @@
 		964F32411B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 964F322D1B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf */; };
 		964F32441B1F9D60008A43BF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F32431B1F9D60008A43BF /* NavigationController.swift */; };
 		964F32451B1F9D60008A43BF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F32431B1F9D60008A43BF /* NavigationController.swift */; };
+		969603671B25DEA900A6A690 /* UIImage+Tinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969603661B25DEA900A6A690 /* UIImage+Tinting.swift */; };
+		969603691B26048100A6A690 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969603681B26048100A6A690 /* LocationManager.swift */; };
+		9696036B1B26215100A6A690 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9696036A1B26215100A6A690 /* Location.swift */; };
 		96DC24051B091D5E003FF892 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC24041B091D5E003FF892 /* AppDelegate.swift */; };
 		96DC24071B091D5E003FF892 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC24061B091D5E003FF892 /* ViewController.swift */; };
 		96DC240A1B091D5E003FF892 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC24081B091D5E003FF892 /* Main.storyboard */; };
@@ -69,6 +72,9 @@
 		964F322C1B1F9C31008A43BF /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "Assets/Open Sans/OpenSans-Semibold.ttf"; sourceTree = SOURCE_ROOT; };
 		964F322D1B1F9C31008A43BF /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "Assets/Open Sans/OpenSans-SemiboldItalic.ttf"; sourceTree = SOURCE_ROOT; };
 		964F32431B1F9D60008A43BF /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		969603661B25DEA900A6A690 /* UIImage+Tinting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Tinting.swift"; sourceTree = "<group>"; };
+		969603681B26048100A6A690 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9696036A1B26215100A6A690 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		96DC23FF1B091D5E003FF892 /* YAWA-Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YAWA-Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DC24031B091D5E003FF892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96DC24041B091D5E003FF892 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 		964F32231B1F9A3A008A43BF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				969603661B25DEA900A6A690 /* UIImage+Tinting.swift */,
 				964F321F1B1F9A33008A43BF /* UIColor+FlatColors.h */,
 				964F32201B1F9A33008A43BF /* UIColor+FlatColors.m */,
 			);
@@ -195,6 +202,7 @@
 			children = (
 				96DC24061B091D5E003FF892 /* ViewController.swift */,
 				964F32431B1F9D60008A43BF /* NavigationController.swift */,
+				969603681B26048100A6A690 /* LocationManager.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -205,6 +213,7 @@
 				96DC24251B091E74003FF892 /* Current.swift */,
 				96DC242B1B094420003FF892 /* Weekly.swift */,
 				96DC242D1B094431003FF892 /* Daily.swift */,
+				9696036A1B26215100A6A690 /* Location.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -339,7 +348,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				96DC242C1B094420003FF892 /* Weekly.swift in Sources */,
+				9696036B1B26215100A6A690 /* Location.swift in Sources */,
 				964F32441B1F9D60008A43BF /* NavigationController.swift in Sources */,
+				969603691B26048100A6A690 /* LocationManager.swift in Sources */,
+				969603671B25DEA900A6A690 /* UIImage+Tinting.swift in Sources */,
 				96DC24261B091E74003FF892 /* Current.swift in Sources */,
 				96DC24071B091D5E003FF892 /* ViewController.swift in Sources */,
 				964F32211B1F9A33008A43BF /* UIColor+FlatColors.m in Sources */,
@@ -478,6 +490,7 @@
 				INFOPLIST_FILE = "YAWA-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "acdb6170-1bd9-4a7e-9aa1-6cd7db32cfa0";
 				SWIFT_OBJC_BRIDGING_HEADER = "YAWA-Weather/YAWA-Weather-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -491,6 +504,7 @@
 				INFOPLIST_FILE = "YAWA-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "acdb6170-1bd9-4a7e-9aa1-6cd7db32cfa0";
 				SWIFT_OBJC_BRIDGING_HEADER = "YAWA-Weather/YAWA-Weather-Bridging-Header.h";
 			};
 			name = Release;

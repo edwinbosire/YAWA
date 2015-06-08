@@ -15,6 +15,8 @@ struct Current {
     var temperature: Int
     var humidity: Double
     var precipProbability: Double
+	var windSpeed: Int
+	var windDirection: String?
     var summary: String
     var icon: UIImage?
 
@@ -25,8 +27,12 @@ struct Current {
         temperature = currentWeather["temperature"] as! Int
         humidity = currentWeather["humidity"] as! Double
         precipProbability = currentWeather["precipProbability"] as! Double
+		windSpeed = currentWeather["windSpeed"] as! Int
         summary = currentWeather["summary"] as! String
-        
+		
+		let windDirectionDegrees  = currentWeather["windBearing"] as! Int
+		windDirection = windDirectionFromDegress(windDirectionDegrees)
+		
         let currentTimeIntVale = currentWeather["time"] as! Int
         currentTime = dateStringFromUnixTime(currentTimeIntVale)
         
@@ -34,13 +40,31 @@ struct Current {
         icon = Current.weatherIconFromString(iconString)
     }
 
+	func windDirectionFromDegress(degrees: Int) -> String {
+		
+		switch degrees {
+			case (0...45):
+					return "North"
+			case (315...360):
+					return "North"
+			case (45...135):
+					return "East"
+			case (135...225):
+					return "South"
+			case (225...315):
+					return "West"
+			default:
+					return "Unknown"
+		}
+		
+	}
     
     func dateStringFromUnixTime(unixTime: Int) -> String {
         let timeInSeconds = NSTimeInterval(unixTime)
         let weatherDate = NSDate(timeIntervalSince1970: timeInSeconds)
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
+        dateFormatter.dateFormat = "EEEE, MMM d"
         
         return dateFormatter.stringFromDate(weatherDate)
     }
