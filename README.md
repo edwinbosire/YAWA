@@ -16,7 +16,8 @@ The UI improvements were done on a different day. Take a look at the **TODO** li
 
 ##TODO
 - Settings screen?
-- Allow user to Add/Edit cusom locations
+- Allow user to Add/Edit custom locations
+- ~~Re-organise and delete locations~~
 - Add paging to support above feature
 - Write tests (Should have started)
 - Publish to the app store
