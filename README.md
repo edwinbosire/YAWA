@@ -6,7 +6,7 @@ I followed a course on TeamTreehouse, an introduction to Swift on my part, and i
 This is a simple weather app that retrieves data from [forecast.io](forecast.io), we parse the data and display it on screen.
 
 <p align="center">
-  <img src="http://i.imgur.com/EYYHOU8.gifv" alt="Animated gif">
+  <img src="http://i.imgur.com/rJHcX4t.gif" alt="Animated gif">
 </p>
 
 I spent the weekend watching the entire TeamTreehouse course (on 2x ofcourse) and wrote the entire code while standing in my kitchen, basically what am trying to say is the code quality is somewhat lacking.
