@@ -182,10 +182,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		locationManager.locationBlock = {(location: Location?, error: NSError?) -> Void in
 			
 			if error != nil {
-				//Cannot get location raise warning
 				NSLog("Could not retrieve location")
 			}else {
-				//update ui
 				self.title = "\(location!.municipality), \(location!.locality)"
 			}
 		}
@@ -221,6 +219,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		self.weeklyForcastDayFiveLabel.alpha = 0.0
 		self.weeklyForcastDayFiveIcon.alpha = 0.0
 		self.weeklyForcastDayFiveTemperatureLabel.alpha = 0.0
+		
+		
+		
 		//2. Animate elements
 		
 		refreshAnimation()
@@ -257,39 +258,42 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 	
 	func refreshAnimation() ->Void {
 		
-		
-		self.todaysWeatherIcon.transform = CGAffineTransformMakeTranslation(-300, 0)
-		self.todaysWeatherDateLabel.transform = CGAffineTransformMakeTranslation(300, 0)
-		self.todaysWeatherTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, -500)
-		
-		self.todaysWeatherWindSpeedLabel.transform = CGAffineTransformMakeTranslation(-300, 0)
-		self.todaysWeatherWindSpeedIcon.transform = CGAffineTransformMakeTranslation(-300, 0)
-		
-		self.todaysWeatherWindDirectionLabel.transform = CGAffineTransformMakeTranslation(300, 0)
-		self.todaysWeatherWindDirectionIcon.transform = CGAffineTransformMakeTranslation(-300, 0)
-		
-		self.todaysWeatherHumidityLabel.transform = CGAffineTransformMakeTranslation(300, 0)
-		self.todaysWeatherHumidityIcon.transform = CGAffineTransformMakeTranslation(300, 0)
-		
-		self.weeklyForcastDayOneLabel.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayOneIcon.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayOneTemperaturLabel.transform = CGAffineTransformMakeTranslation(0, 600)
-		
-		self.weeklyForcastDayTwoLabel.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayTwoIcon.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayTwoTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, 600)
-		
-		self.weeklyForcastDayThreeLabel.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayThreeIcon.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayThreeTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, 600)
-		
-		self.weeklyForcastDayFourLabel.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayFourIcon.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayFourTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, 600)
-		
-		self.weeklyForcastDayFiveLabel.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayFiveIcon.transform = CGAffineTransformMakeTranslation(0, 600)
-		self.weeklyForcastDayFiveTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+		UIView.animateWithDuration(0.0, animations: { () -> Void in
+			
+			self.todaysWeatherIcon.transform = CGAffineTransformMakeTranslation(-300, 0)
+			self.todaysWeatherDateLabel.transform = CGAffineTransformMakeTranslation(300, 0)
+			self.todaysWeatherTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, -500)
+			
+			self.todaysWeatherWindSpeedLabel.transform = CGAffineTransformMakeTranslation(-250, 0)
+			self.todaysWeatherWindSpeedIcon.transform = CGAffineTransformMakeTranslation(-250, 0)
+			
+			self.todaysWeatherWindDirectionLabel.transform = CGAffineTransformMakeTranslation(300, 0)
+			self.todaysWeatherWindDirectionIcon.transform = CGAffineTransformMakeTranslation(300, 0)
+			
+			self.todaysWeatherHumidityLabel.transform = CGAffineTransformMakeTranslation(300, 0)
+			self.todaysWeatherHumidityIcon.transform = CGAffineTransformMakeTranslation(300, 0)
+			
+			self.weeklyForcastDayOneLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayOneIcon.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayOneTemperaturLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			
+			self.weeklyForcastDayTwoLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayTwoIcon.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayTwoTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			
+			self.weeklyForcastDayThreeLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayThreeIcon.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayThreeTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			
+			self.weeklyForcastDayFourLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayFourIcon.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayFourTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			
+			self.weeklyForcastDayFiveLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayFiveIcon.transform = CGAffineTransformMakeTranslation(0, 600)
+			self.weeklyForcastDayFiveTemperatureLabel.transform = CGAffineTransformMakeTranslation(0, 600)
+			
+		})
 		
 		springWithDelay(0.9, delay: 0.45, dampingRation: 0.9, animations: {
 			self.todaysWeatherIcon.transform = CGAffineTransformIdentity
@@ -306,11 +310,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		})
 		
 		
-		springWithDelay(0.9, delay: 0.45, animations: {
+		springWithDelay(0.9, delay: 0.65, animations: {
 			self.todaysWeatherWindSpeedLabel.transform = CGAffineTransformIdentity
 		})
 		
-		springWithDelay(0.9, delay: 0.45, dampingRation: 0.9, animations: {
+		springWithDelay(0.9, delay: 0.65, animations: {
 			self.todaysWeatherWindDirectionLabel.transform = CGAffineTransformIdentity
 		})
 		
@@ -322,7 +326,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 			self.todaysWeatherWindSpeedIcon.transform = CGAffineTransformIdentity
 		})
 		
-		springWithDelay(0.9, delay: 0.45, dampingRation: 0.8, animations: {
+		springWithDelay(0.9, delay: 0.45, animations: {
 			self.todaysWeatherWindDirectionIcon.transform = CGAffineTransformIdentity
 		})
 		

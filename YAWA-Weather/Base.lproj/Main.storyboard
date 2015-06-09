@@ -2,10 +2,16 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WlD-bA-y1a">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -220,7 +226,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXh-bO-hQZ">
                                         <rect key="frame" x="250" y="26" width="35" height="24"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="umbrella" translatesAutoresizingMaskIntoConstraints="NO" id="76t-A9-gKy">
@@ -233,7 +239,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="SOUTH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deE-La-5Jz">
                                         <rect key="frame" x="148" y="26" width="58" height="24"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compass" translatesAutoresizingMaskIntoConstraints="NO" id="BdU-lk-ETt">
@@ -249,7 +255,7 @@
                                             <constraint firstAttribute="height" constant="24" id="GR4-Hd-U9v"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="windFlag" translatesAutoresizingMaskIntoConstraints="NO" id="Aea-b2-I1h">
@@ -287,7 +293,7 @@
                                             <constraint firstAttribute="height" constant="22" id="eZG-1u-G1r"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="partly-cloudly" translatesAutoresizingMaskIntoConstraints="NO" id="SAc-DQ-nq7">
@@ -338,6 +344,9 @@
                     <navigationItem key="navigationItem" id="na0-Mf-Xb8">
                         <barButtonItem key="leftBarButtonItem" image="burgerButton" id="WNT-bo-jCf">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="824-Eu-2Rk" kind="modal" id="pkW-qN-fYq"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="plusButton" id="ccm-5k-ro8">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -374,6 +383,113 @@
             </objects>
             <point key="canvasLocation" x="800" y="368"/>
         </scene>
+        <!--Cities View Controller-->
+        <scene sceneID="HMC-l2-ysH">
+            <objects>
+                <viewController id="lDf-ur-IyF" customClass="CitiesViewController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pzu-G2-79c"/>
+                        <viewControllerLayoutGuide type="bottom" id="L5C-fr-FAg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RJw-4C-7WD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4Ly-20-YLU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="citiesCellReusableCell" rowHeight="70" id="d6A-4A-kcb" customClass="CitiesTableViewCell" customModule="YAWA_Weather" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d6A-4A-kcb" id="Ttu-kJ-5j7">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="partly-cloudly" translatesAutoresizingMaskIntoConstraints="NO" id="6f4-Kc-z0q">
+                                                    <rect key="frame" x="192" y="12" width="45" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="45" id="GZD-RY-QpI"/>
+                                                        <constraint firstAttribute="height" constant="45" id="ISF-9o-ZkN"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P48-sl-j8e">
+                                                    <rect key="frame" x="35" y="18" width="84" height="33"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="24"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:25 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyx-0V-TW6">
+                                                    <rect key="frame" x="35" y="8" width="27" height="17"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24°C" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5M-0Q-wLt">
+                                                    <rect key="frame" x="244" y="14" width="67" height="41"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="30"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P48-sl-j8e" firstAttribute="leading" secondItem="Ttu-kJ-5j7" secondAttribute="leadingMargin" constant="27" id="FOr-t3-QKZ"/>
+                                                <constraint firstAttribute="centerY" secondItem="P48-sl-j8e" secondAttribute="centerY" id="QCo-nH-bf2"/>
+                                                <constraint firstAttribute="centerY" secondItem="W5M-0Q-wLt" secondAttribute="centerY" id="R6H-3J-U8e"/>
+                                                <constraint firstAttribute="centerY" secondItem="6f4-Kc-z0q" secondAttribute="centerY" id="SSP-Rx-NjY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="W5M-0Q-wLt" secondAttribute="trailing" constant="1" id="Wnv-0g-3GW"/>
+                                                <constraint firstItem="nyx-0V-TW6" firstAttribute="leading" secondItem="P48-sl-j8e" secondAttribute="leading" id="Wye-Z9-6Nh"/>
+                                                <constraint firstItem="W5M-0Q-wLt" firstAttribute="leading" secondItem="6f4-Kc-z0q" secondAttribute="trailing" constant="7" id="lCH-oS-qDO"/>
+                                                <constraint firstItem="nyx-0V-TW6" firstAttribute="top" secondItem="Ttu-kJ-5j7" secondAttribute="topMargin" id="xds-ww-OBf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="temperatureLabel" destination="W5M-0Q-wLt" id="ZWH-cA-Ayz"/>
+                                            <outlet property="timeLabel" destination="nyx-0V-TW6" id="Wzn-Cn-IzZ"/>
+                                            <outlet property="titleLabel" destination="P48-sl-j8e" id="YSB-wG-Su9"/>
+                                            <outlet property="weatherIcon" destination="6f4-Kc-z0q" id="kKx-en-plF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lDf-ur-IyF" id="YYW-kD-Z1l"/>
+                                    <outlet property="delegate" destination="lDf-ur-IyF" id="K94-0c-lpg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Ly-20-YLU" firstAttribute="top" secondItem="RJw-4C-7WD" secondAttribute="topMargin" id="Mck-1Y-dd5"/>
+                            <constraint firstItem="L5C-fr-FAg" firstAttribute="top" secondItem="4Ly-20-YLU" secondAttribute="bottom" id="jTM-aB-g2b"/>
+                            <constraint firstItem="4Ly-20-YLU" firstAttribute="leading" secondItem="RJw-4C-7WD" secondAttribute="leadingMargin" constant="-16" id="kpX-W5-IcF"/>
+                            <constraint firstAttribute="centerX" secondItem="4Ly-20-YLU" secondAttribute="centerX" id="xsL-Q9-kfy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rBB-Vy-weg">
+                        <barButtonItem key="leftBarButtonItem" image="backArrow" id="kOY-Xe-hNP" userLabel="Back button">
+                            <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="dismissCurrentView:" destination="lDf-ur-IyF" id="TKR-v7-Oo4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="EDIT" id="lDY-qT-aC7">
+                            <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="editCities:" destination="lDf-ur-IyF" id="tS8-W3-7WI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backButtonItem" destination="kOY-Xe-hNP" id="tjm-Ry-D7Q"/>
+                        <outlet property="editCitiesBarItem" destination="lDY-qT-aC7" id="nur-Ac-atc"/>
+                        <outlet property="tableView" destination="4Ly-20-YLU" id="QAv-Hd-9WM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t27-JT-Q3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701" y="362"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="jZg-Um-3V4">
             <objects>
@@ -392,8 +508,27 @@
             </objects>
             <point key="canvasLocation" x="268" y="368"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xkE-Uy-uch">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="824-Eu-2Rk" customClass="NavigationController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DnV-4z-jGs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lDf-ur-IyF" kind="relationship" relationship="rootViewController" id="0Mk-gc-0HV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezu-we-Uns" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1169" y="362"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="backArrow" width="22" height="22"/>
         <image name="burgerButton" width="22" height="22"/>
         <image name="compass" width="45" height="45"/>
         <image name="partly-cloudly" width="90" height="90"/>

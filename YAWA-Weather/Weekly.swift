@@ -27,12 +27,6 @@ struct Weekly {
 		
     }
 	
-//	var dayOne: Daily {
-//		get {
-//				return weeklyForcasts[0]
-//		}
-//	}
-	
 	func dayOne() -> Daily {
 		return weeklyForcasts[0]
 	}

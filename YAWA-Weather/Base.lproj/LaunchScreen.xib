@@ -10,15 +10,23 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunny" translatesAutoresizingMaskIntoConstraints="NO" id="YDW-bk-4M2">
-                    <rect key="frame" x="120" y="120" width="240" height="240"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="humidity" translatesAutoresizingMaskIntoConstraints="NO" id="YDW-bk-4M2">
+                    <rect key="frame" x="190" y="190" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="240" id="1dv-jM-Z2c"/>
                         <constraint firstAttribute="width" constant="240" id="Q9Q-Br-Tz3"/>
+                        <constraint firstAttribute="width" constant="100" id="YpW-uS-xzq"/>
+                        <constraint firstAttribute="height" constant="100" id="nLc-tE-FmV"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="1dv-jM-Z2c"/>
+                            <exclude reference="Q9Q-Br-Tz3"/>
+                        </mask>
+                    </variation>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.022046700240000001" green="0.040160711840000002" blue="0.18935600829999999" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="YDW-bk-4M2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="QHS-xF-8Gw"/>
                 <constraint firstItem="YDW-bk-4M2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="120" id="a0k-Rx-XWB"/>
@@ -37,6 +45,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Sunny" width="810" height="806"/>
+        <image name="humidity" width="41" height="46"/>
     </resources>
 </document>

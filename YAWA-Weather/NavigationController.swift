@@ -13,9 +13,9 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationBar.setBackgroundImage(UIImage.new(), forBarMetrics: .Default)
+        self.navigationBar.setBackgroundImage(UIImage(named: "navigationBarBackground"), forBarMetrics: .Default)
 		self.navigationBar.shadowImage = UIImage.new()
-		self.navigationBar.translucent = true
+		self.navigationBar.translucent = false
 		
 		var navigationBarAppearance = UINavigationBar.appearance()
 		navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor(),
