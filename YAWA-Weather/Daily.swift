@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Daily {
+class Daily {
    
     var temperatureMax: Int
     var temperatureMin: Int

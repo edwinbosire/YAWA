@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Weekly {
+class Weekly {
     
 	var weeklyForcasts = [Daily]()
 	

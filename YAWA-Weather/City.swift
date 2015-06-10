@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct City {
+class City {
 	
 	var weather: Daily
 	var city: String

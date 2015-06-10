@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Location {
+class Location {
 	var locality: String
 	var municipality: String
 	var postalCode: String
