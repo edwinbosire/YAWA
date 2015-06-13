@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, LocationSearchDelegate {
 	
 	@IBOutlet weak var todaysWeatherIcon: UIImageView!
 	@IBOutlet weak var todaysWeatherDateLabel: UILabel!
@@ -47,6 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 	
 	
 	var locationManager: LocationManager!
+	var searchDisplayViewController: SearchDisplayViewController!
 	var locationCoordinates: CLLocationCoordinate2D!
 	var doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer()
 	
@@ -78,9 +79,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		// Dispose of any resources that can be recreated.
 	}
 	
-	
 	func doubleTapRefresh() -> Void {
 		refresh()
+	}
+	
+	
+	@IBAction func presentSearchViewController(sender: AnyObject) {
+		
+		searchDisplayViewController = storyboard?.instantiateViewControllerWithIdentifier("searchDisplay") as! SearchDisplayViewController
+		searchDisplayViewController.delegate  = self
+		var navigation = NavigationController(rootViewController: searchDisplayViewController)
+		
+		self.navigationController?.presentViewController(navigation, animated: true, completion: nil)
 	}
 	
 	func getWeatherForLocation(location: Location) -> Void {
@@ -432,5 +442,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		})
 	}
 	
+	//MARK: Location Delegate
+	
+	func dismissSearchViewController() {
+		searchDisplayViewController?.dismissViewControllerAnimated(true, completion:nil)
+
+	}
+	func didPickLocation(selectedLocation: Location) {
+
+		NSLog(" location selected \(selectedLocation.adminArea)")
+		searchDisplayViewController?.dismissViewControllerAnimated(true, completion: { () -> Void in
+			
+		})
+	}
 }
 

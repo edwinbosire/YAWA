@@ -10,10 +10,12 @@ import UIKit
 
 class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
 
+	var delegate: LocationSearchDelegate?
 	var tableData = [Location]()
 	let searchController = UISearchController(searchResultsController: nil)
 	
 	@IBOutlet weak var searchResultsTable: UITableView!
+	@IBOutlet weak var badgeView: UIView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,7 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 		searchController.dimsBackgroundDuringPresentation = false
 		searchController.searchBar.sizeToFit()
 		searchResultsTable.tableHeaderView = searchController.searchBar
-		
+		searchResultsTable.tableFooterView = UIView()
 		searchResultsTable.reloadData()
 	}
 
@@ -42,9 +44,8 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 			searchController.searchBar.resignFirstResponder()
 		}
 		tableData = []
-		navigationController?.dismissViewControllerAnimated(true, completion: { () -> Void in
-			
-		})
+//		navigationController?.dismissViewControllerAnimated(true, completion: nil)
+		delegate?.dismissSearchViewController()
 	}
 	
  // MARK: - Table view data source
@@ -70,12 +71,16 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 		let location = tableData[indexPath.row]
 		
 		var locality = location.locality
-		if (count(locality) < 1) {
+		if (locality.isEmpty) {
 			locality = location.adminArea
 		}
 		cell.textLabel?.text = "\(locality)"
 	
-		cell.detailTextLabel?.text = "\(location.county)"
+		if (locality.isEmpty){
+			cell.textLabel?.text = "\(location.county)"
+		}else {
+			cell.detailTextLabel?.text = "\(location.county)"
+		}
 		return cell
 	}
 	
@@ -85,18 +90,30 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 	
 	}
 	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+		
+		let selectedLocation = tableData[indexPath.row]
+		delegate?.didPickLocation(selectedLocation)
+	}
 	//MARK: - UISearchControllerDelegate
 	
-	func willDismissSearchController(searchController: UISearchController) {
-		tableData = []
-	}
-
 	func didPresentSearchController(searchController: UISearchController) {
 		searchController.searchBar.becomeFirstResponder()
 	}
 	//MARK: UISearchResultsUpdater delegate
 	
 	func updateSearchResultsForSearchController(searchController: UISearchController) {
+		
+		UIView.animateWithDuration(0.3, animations: { () -> Void in
+			if self.tableData.isEmpty {
+				self.badgeView.alpha = 1.0
+				self.searchResultsTable.alpha = 0.0
+			}else {
+				self.badgeView.alpha = 0.0
+				self.searchResultsTable.alpha = 1.0
+			}
+		})
 		
 		let locationManager = LocationManager.init()
 		

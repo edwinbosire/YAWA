@@ -8,6 +8,7 @@
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Light.ttf">
             <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
@@ -351,7 +352,7 @@
                         <barButtonItem key="rightBarButtonItem" image="plusButton" id="ccm-5k-ro8">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="ul9-iM-9WF" kind="modal" id="tLy-go-XXr"/>
+                                <action selector="presentSearchViewController:" destination="vXZ-lx-hvc" id="wPX-2f-Ybk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -514,7 +515,7 @@
         <!--Search Display View Controller-->
         <scene sceneID="bvf-39-TcP">
             <objects>
-                <viewController id="8cV-wv-M5f" customClass="SearchDisplayViewController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchDisplay" id="8cV-wv-M5f" customClass="SearchDisplayViewController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hkg-rh-UNi"/>
                         <viewControllerLayoutGuide type="bottom" id="h1s-rV-zWp"/>
@@ -523,6 +524,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sO-1g-HVH" userLabel="BADGE VIEW">
+                                <rect key="frame" x="20" y="100" width="280" height="280"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="humidity" translatesAutoresizingMaskIntoConstraints="NO" id="eIm-fj-YDB">
+                                        <rect key="frame" x="90" y="90" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Ami-Rf-Sig"/>
+                                            <constraint firstAttribute="height" constant="100" id="bIx-Ei-OGG"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MERCURY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="od7-fK-P8a">
+                                        <rect key="frame" x="90" y="205" width="100" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="16"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="eIm-fj-YDB" secondAttribute="centerX" id="5iu-Gi-XEf"/>
+                                    <constraint firstItem="od7-fK-P8a" firstAttribute="top" secondItem="eIm-fj-YDB" secondAttribute="bottom" constant="15" id="KGe-dw-fj0"/>
+                                    <constraint firstItem="od7-fK-P8a" firstAttribute="leading" secondItem="eIm-fj-YDB" secondAttribute="leading" id="WCh-du-rLC"/>
+                                    <constraint firstAttribute="centerY" secondItem="eIm-fj-YDB" secondAttribute="centerY" id="jBp-jr-CHr"/>
+                                    <constraint firstAttribute="centerX" secondItem="od7-fK-P8a" secondAttribute="centerX" id="u9L-6P-exi"/>
+                                    <constraint firstAttribute="centerX" secondItem="eIm-fj-YDB" secondAttribute="centerX" id="z19-s7-I3c"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-AO-kzP">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -535,9 +563,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eSx-AO-kzP" firstAttribute="leading" secondItem="GVQ-2v-e41" secondAttribute="leading" id="4qP-fB-hT0"/>
+                            <constraint firstItem="3sO-1g-HVH" firstAttribute="leading" secondItem="GVQ-2v-e41" secondAttribute="leading" constant="20" id="55T-i4-UFQ"/>
+                            <constraint firstItem="3sO-1g-HVH" firstAttribute="top" secondItem="Hkg-rh-UNi" secondAttribute="bottom" constant="36" id="DG8-Qu-OsU"/>
+                            <constraint firstItem="h1s-rV-zWp" firstAttribute="top" secondItem="3sO-1g-HVH" secondAttribute="bottom" constant="188" id="HsZ-rI-zgM"/>
                             <constraint firstItem="h1s-rV-zWp" firstAttribute="top" secondItem="eSx-AO-kzP" secondAttribute="bottom" id="VMR-Ax-qzG"/>
                             <constraint firstAttribute="trailing" secondItem="eSx-AO-kzP" secondAttribute="trailing" id="fQC-zy-Y0v"/>
                             <constraint firstItem="eSx-AO-kzP" firstAttribute="top" secondItem="Hkg-rh-UNi" secondAttribute="bottom" id="iSM-mH-azh"/>
+                            <constraint firstAttribute="trailing" secondItem="3sO-1g-HVH" secondAttribute="trailing" constant="20" id="mGB-rr-R6A"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aqo-PT-vIc">
@@ -549,6 +581,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="badgeView" destination="3sO-1g-HVH" id="Sio-mZ-NWg"/>
                         <outlet property="searchDisplayController" destination="FJX-rB-8AA" id="YgE-Ml-5MS"/>
                         <outlet property="searchResultsTable" destination="eSx-AO-kzP" id="tHY-bd-GfR"/>
                     </connections>
@@ -586,6 +619,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Lce-0r-nvk">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZtY-u9-xpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ul9-iM-9WF" customClass="NavigationController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cn4-JP-2e6">
@@ -597,7 +631,6 @@
                         <segue destination="8cV-wv-M5f" kind="relationship" relationship="rootViewController" id="1be-60-Vt8"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZtY-u9-xpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1166" y="-264"/>
         </scene>
@@ -606,6 +639,7 @@
         <image name="backArrow" width="22" height="22"/>
         <image name="burgerButton" width="22" height="22"/>
         <image name="compass" width="45" height="45"/>
+        <image name="humidity" width="41" height="46"/>
         <image name="partly-cloudly" width="90" height="90"/>
         <image name="plusButton" width="22" height="22"/>
         <image name="umbrella" width="45" height="45"/>

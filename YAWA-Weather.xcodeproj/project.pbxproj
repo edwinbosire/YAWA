@@ -55,6 +55,8 @@
 		96C1345C1B2A59D30014759A /* SearchDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1345A1B2A59D30014759A /* SearchDisplayViewController.swift */; };
 		96C1345E1B2A5EB30014759A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1345D1B2A5EB30014759A /* SearchTableViewCell.swift */; };
 		96C1345F1B2A5EB30014759A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1345D1B2A5EB30014759A /* SearchTableViewCell.swift */; };
+		96C134611B2C61A20014759A /* LocationSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C134601B2C61A20014759A /* LocationSearchDelegate.swift */; };
+		96C134621B2C61A20014759A /* LocationSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C134601B2C61A20014759A /* LocationSearchDelegate.swift */; };
 		96DC24051B091D5E003FF892 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC24041B091D5E003FF892 /* AppDelegate.swift */; };
 		96DC24071B091D5E003FF892 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC24061B091D5E003FF892 /* ViewController.swift */; };
 		96DC240A1B091D5E003FF892 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC24081B091D5E003FF892 /* Main.storyboard */; };
@@ -101,6 +103,7 @@
 		96C1344A1B2742380014759A /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = City.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		96C1345A1B2A59D30014759A /* SearchDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDisplayViewController.swift; sourceTree = "<group>"; };
 		96C1345D1B2A5EB30014759A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		96C134601B2C61A20014759A /* LocationSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchDelegate.swift; sourceTree = "<group>"; };
 		96DC23FF1B091D5E003FF892 /* YAWA-Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YAWA-Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DC24031B091D5E003FF892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96DC24041B091D5E003FF892 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -162,6 +165,14 @@
 			name = "Fonts - Open Sans";
 			sourceTree = "<group>";
 		};
+		96C134631B2C61A70014759A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				96C134601B2C61A20014759A /* LocationSearchDelegate.swift */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
 		96DC23F61B091D5E003FF892 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +196,7 @@
 			children = (
 				96DC24041B091D5E003FF892 /* AppDelegate.swift */,
 				96DC24291B092AE3003FF892 /* Constants.swift */,
+				96C134631B2C61A70014759A /* Protocol */,
 				96DC24241B091E32003FF892 /* Controller */,
 				96DC24271B091E7A003FF892 /* Model */,
 				96DC24281B091E87003FF892 /* View */,
@@ -394,6 +406,7 @@
 				96C1343C1B2714C90014759A /* CitiesViewController.swift in Sources */,
 				96C1345B1B2A59D30014759A /* SearchDisplayViewController.swift in Sources */,
 				96C1345E1B2A5EB30014759A /* SearchTableViewCell.swift in Sources */,
+				96C134611B2C61A20014759A /* LocationSearchDelegate.swift in Sources */,
 				96DC242A1B092AE3003FF892 /* Constants.swift in Sources */,
 				96DC242E1B094431003FF892 /* Daily.swift in Sources */,
 			);
@@ -412,6 +425,7 @@
 				96C1344E1B2743D80014759A /* Location.swift in Sources */,
 				96C134401B271C910014759A /* CitiesTableViewCell.swift in Sources */,
 				96C1343D1B2714C90014759A /* CitiesViewController.swift in Sources */,
+				96C134621B2C61A20014759A /* LocationSearchDelegate.swift in Sources */,
 				96C134591B2749A60014759A /* UIImage+Tinting.swift in Sources */,
 				96C134541B2748FD0014759A /* ViewController.swift in Sources */,
 				96C1345F1B2A5EB30014759A /* SearchTableViewCell.swift in Sources */,
