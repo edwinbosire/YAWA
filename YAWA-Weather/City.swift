@@ -8,16 +8,19 @@
 
 import Foundation
 
-class City {
+struct City {
 	
-	var weather: Daily
-	var city: String
+	var weather: Forcast?
+	let location: Location?
 	var index: Int = 0
-
-	init(weather: Daily, city: String, order: Int?){
+	
+	init(weather: Forcast?, location: Location, order: Int?){
 		
-		self.weather = weather
-		self.city = city
+		if let currentWeather = weather {
+			self.weather = currentWeather
+		}
+		
+		self.location = location
 		
 		if let ndx = order {
 			self.index = ndx

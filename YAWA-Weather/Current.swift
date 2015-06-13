@@ -1,5 +1,5 @@
 //
-//  Current.swift
+//  Forcast.swift
 //  YAWA-Weather
 //
 //  Created by edwin bosire on 17/05/2015.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Current {
+class Forcast : NSObject {
     
     var currentTime: String?
     var temperature: Int
@@ -19,9 +19,20 @@ class Current {
 	var windDirection: String?
     var summary: String
     var icon: UIImage?
-
-    
+	var weeklyForcast: Weekly?
+	
+	override init() {
+		temperature = 0
+		humidity = 0.0
+		precipProbability = 0.0
+		windSpeed = 0
+		summary = ""
+		windDirection = ""
+		currentTime = ""
+	}
+	
     init(weatherDictionary: NSDictionary) {
+		
         let currentWeather = weatherDictionary["currently"] as! NSDictionary
         
         temperature = currentWeather["temperature"] as! Int
@@ -29,17 +40,21 @@ class Current {
         precipProbability = currentWeather["precipProbability"] as! Double
 		windSpeed = currentWeather["windSpeed"] as! Int
         summary = currentWeather["summary"] as! String
+		weeklyForcast = Weekly(weatherDictionary: weatherDictionary)
+		
+		super.init()
 		
 		let windDirectionDegrees  = currentWeather["windBearing"] as! Int
-		windDirection = windDirectionFromDegress(windDirectionDegrees)
+		windDirection = self.windDirectionFromDegress(windDirectionDegrees)
 		
         let currentTimeIntVale = currentWeather["time"] as! Int
         currentTime = dateStringFromUnixTime(currentTimeIntVale)
         
         let iconString = currentWeather["icon"] as! String
-        icon = Current.weatherIconFromString(iconString)
+        icon = Forcast.weatherIconFromString(iconString)
     }
 
+	
 	func windDirectionFromDegress(degrees: Int) -> String {
 		
 		switch degrees {

@@ -350,6 +350,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="plusButton" id="ccm-5k-ro8">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="ul9-iM-9WF" kind="modal" id="tLy-go-XXr"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -508,6 +511,60 @@
             </objects>
             <point key="canvasLocation" x="268" y="368"/>
         </scene>
+        <!--Search Display View Controller-->
+        <scene sceneID="bvf-39-TcP">
+            <objects>
+                <viewController id="8cV-wv-M5f" customClass="SearchDisplayViewController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hkg-rh-UNi"/>
+                        <viewControllerLayoutGuide type="bottom" id="h1s-rV-zWp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GVQ-2v-e41">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-AO-kzP">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8cV-wv-M5f" id="I3f-Vr-Eij"/>
+                                    <outlet property="delegate" destination="8cV-wv-M5f" id="fFu-Ns-yIL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eSx-AO-kzP" firstAttribute="leading" secondItem="GVQ-2v-e41" secondAttribute="leading" id="4qP-fB-hT0"/>
+                            <constraint firstItem="h1s-rV-zWp" firstAttribute="top" secondItem="eSx-AO-kzP" secondAttribute="bottom" id="VMR-Ax-qzG"/>
+                            <constraint firstAttribute="trailing" secondItem="eSx-AO-kzP" secondAttribute="trailing" id="fQC-zy-Y0v"/>
+                            <constraint firstItem="eSx-AO-kzP" firstAttribute="top" secondItem="Hkg-rh-UNi" secondAttribute="bottom" id="iSM-mH-azh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aqo-PT-vIc">
+                        <barButtonItem key="leftBarButtonItem" image="backArrow" id="Ohh-vR-KLb">
+                            <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancelSearch:" destination="8cV-wv-M5f" id="JLf-q7-Kpc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="FJX-rB-8AA" id="YgE-Ml-5MS"/>
+                        <outlet property="searchResultsTable" destination="eSx-AO-kzP" id="tHY-bd-GfR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="05C-TD-SMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="FJX-rB-8AA">
+                    <connections>
+                        <outlet property="delegate" destination="8cV-wv-M5f" id="LJe-wQ-axw"/>
+                        <outlet property="searchContentsController" destination="8cV-wv-M5f" id="8ur-3m-7ib"/>
+                        <outlet property="searchResultsDataSource" destination="8cV-wv-M5f" id="oMC-Sv-P65"/>
+                        <outlet property="searchResultsDelegate" destination="8cV-wv-M5f" id="F6C-bD-oNt"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1616" y="-264"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="xkE-Uy-uch">
             <objects>
@@ -525,6 +582,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezu-we-Uns" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1169" y="362"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Lce-0r-nvk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ul9-iM-9WF" customClass="NavigationController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cn4-JP-2e6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8cV-wv-M5f" kind="relationship" relationship="rootViewController" id="1be-60-Vt8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZtY-u9-xpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="-264"/>
         </scene>
     </scenes>
     <resources>

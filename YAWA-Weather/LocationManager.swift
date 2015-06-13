@@ -87,33 +87,86 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 		CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemark, error) -> Void in
 			self.locationManager.stopUpdatingLocation()
 			
-			let myLocation = placemark[0] as! CLPlacemark
 			
-			let locality = (myLocation.locality != nil) ? myLocation.locality : ""
-			let postalCode = (myLocation.postalCode != nil) ? myLocation.postalCode : ""
-			let administrativeArea = (myLocation.administrativeArea != nil) ? myLocation.administrativeArea : ""
-			let country = (myLocation.country != nil) ? myLocation.country : ""
-			let municipality = (myLocation.subLocality != nil) ? myLocation.subLocality : "" 
-			
-			let locationItem = Location(locality: locality, municipality: municipality, postalCode: postalCode, administrationArea: administrativeArea, county: country)
-			
-			if self.locationBlock != nil {
+
+			if placemark != nil {
 				
-				self.locationBlock!(locationItem, nil)
+				let myLocation = placemark[0] as! CLPlacemark
+				let locality = (myLocation.locality != nil) ? myLocation.locality : ""
+				let postalCode = (myLocation.postalCode != nil) ? myLocation.postalCode : ""
+				let administrativeArea = (myLocation.administrativeArea != nil) ? myLocation.administrativeArea : ""
+				let country = (myLocation.country != nil) ? myLocation.country : ""
+				let municipality = (myLocation.subLocality != nil) ? myLocation.subLocality : ""
+				
+				let locationItem = Location(locality: locality, municipality: municipality, postalCode: postalCode, administrationArea: administrativeArea, county: country)
+				
+				let locationCollection = locations as NSArray
+				if let singleLocation = locationCollection.lastObject as? CLLocation {
+
+					let coordinates = singleLocation.coordinate
+					locationItem.latitude = coordinates.latitude
+					locationItem.longitude = coordinates.longitude
+				}
+				
+				
+				if self.locationBlock != nil {
+					
+					self.locationBlock!(locationItem, nil)
+				}
+
 			}
 			
+			
 		})
+		
+		/* How about we include the lat & lon as part of the location object and return only one block */
 		
 		if (locationLock == false) {
 			
 			locationLock = true
-			let locationCollection = locations as NSArray
-			let singleLocation = locationCollection.lastObject as! CLLocation
-			let coordinates = singleLocation.coordinate
 			
-			//Send coordinate back via a call back to be used in weather APi
-			self.locationCoordinates!(coordinates)
+			
 		}
 
+	}
+	
+	//MARK: Forward geocoding
+	
+	func searchForLocationWithName(name: String, completionHandler: ([Location], NSError?) ->()) -> () {
+		
+		var searchResultsLocations = [Location]()
+		CLGeocoder().geocodeAddressString(name, completionHandler: { (placemarks, error) -> Void in
+			
+			if((error) != nil){
+				
+				println("Error", error)
+			}
+				
+			else if let allPlacemarks = placemarks {
+				NSLog(" there are \(allPlacemarks.count) locations found" )
+				for aMark in allPlacemarks {
+					
+					var placemark:CLPlacemark = aMark as! CLPlacemark
+					var coordinates:CLLocationCoordinate2D = placemark.location.coordinate
+					
+					let locality = (placemark.locality != nil) ? placemark.locality : ""
+					let postalCode = (placemark.postalCode != nil) ? placemark.postalCode : ""
+					let administrativeArea = (placemark.administrativeArea != nil) ? placemark.administrativeArea : ""
+					let country = (placemark.country != nil) ? placemark.country : ""
+					let municipality = (placemark.subLocality != nil) ? placemark.subLocality : ""
+					
+					let locationItem = Location(locality: locality, municipality: municipality, postalCode: postalCode, administrationArea: administrativeArea, county: country)
+					
+					searchResultsLocations.append(locationItem)
+					completionHandler(searchResultsLocations, error)
+					
+					println("\(placemark.administrativeArea)")
+					
+				}
+			}
+		
+		})
+		
+		return
 	}
 }
