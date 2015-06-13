@@ -24,24 +24,18 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 		self.title = "Your Cities"
 		self.tableView.tableFooterView = UIView.new()
 		
-		let londonWeather = Daily(tempMax: 20, tempMin: 10, weatherIcon: "clear-night", time: 1433796120)
-		let london = City(weather: londonWeather, city: "London", order: 0)
-		
-		let moscowWeather = Daily(tempMax: 2, tempMin: 10, weatherIcon: "rain", time: 1433795120)
-		let moscow = City(weather: moscowWeather, city: "Moscow", order: 1)
+		//replace key = london with City.location.locality
+		let key = "london"
+		if let data = NSUserDefaults.standardUserDefaults().objectForKey(key) as? NSDictionary {
+			
+			let storedCurrentWeather :Forcast = Forcast(weatherDictionary: data)
 
-		let nairobiWeather = Daily(tempMax: 29, tempMin: 10, weatherIcon: "clear-day", time: 1433798120)
-		let nairobi = City(weather: nairobiWeather, city: "Nairobi", order: 5)
-
-		let	nycWeather = Daily(tempMax: 12, tempMin: 10, weatherIcon: "cloudy", time: 1433793520)
-		let nyc = City(weather: londonWeather, city: "New York", order: 2)
-
-		let beiginWeather = Daily(tempMax: 20, tempMin: 10, weatherIcon: "cloudy-night", time: 1433796420)
-		let beigin = City(weather: londonWeather, city: "Beigin", order: 4)
-
-		cities = [london, moscow, nairobi, nyc, beigin]
-		
-		cities.sort({ $0.index > $1.index })
+			let loc = Location(locality: "London", municipality: "Greenwich", postalCode: "se13 7qf", administrationArea: "Greenwhich", county: "London")
+			let london = City(weather: storedCurrentWeather, location: loc, order: 0)
+			
+			cities = [london]
+			
+		}
 	}
 	
 	@IBAction func dismissCurrentView(sender: UIBarButtonItem) {
@@ -71,10 +65,12 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 		
 		let city = cities[indexPath.row]
 		
-		cell.titleLabel.text = city.city
-		cell.timeLabel.text = city.weather.hour
-		cell.temperatureLabel.text = "\(city.weather.temperatureMax)°C"
+		cell.titleLabel.text = city.location?.municipality
+		cell.timeLabel.text = city.weather?.currentTime
 		
+		if let temp = city.weather?.temperature {
+			cell.temperatureLabel.text = "\(temp)°C"
+		}
 		
 		return cell
 	}

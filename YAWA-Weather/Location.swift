@@ -15,7 +15,8 @@ class Location {
 	var postalCode: String
 	var adminArea: String
 	var county: String
-	
+	var latitude: Double = 0.0
+	var longitude: Double = 0.0
 	
 	init(locality: String, municipality: String, postalCode: String, administrationArea: String, county: String) {
 		

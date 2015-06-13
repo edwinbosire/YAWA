@@ -17,7 +17,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -524,97 +523,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Enter Town, City or Postal Address" translatesAutoresizingMaskIntoConstraints="NO" id="AGL-q8-jQR">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="jK9-gV-Vnl"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="8cV-wv-M5f" id="m8f-ZI-3wX"/>
-                                </connections>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cKN-ju-VU8">
-                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-AO-kzP">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultsCell" id="83s-hM-L83" customClass="SearchTableViewCell" customModule="YAWA_Weather" customModuleProvider="target">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="83s-hM-L83" id="bgl-2X-u2M">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London, Greenwich" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owl-iz-tcp">
-                                                    <rect key="frame" x="10" y="10" width="300" height="21"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Owl-iz-tcp" firstAttribute="leading" secondItem="bgl-2X-u2M" secondAttribute="leadingMargin" constant="2" id="6hG-9j-9yW"/>
-                                                <constraint firstItem="Owl-iz-tcp" firstAttribute="top" secondItem="bgl-2X-u2M" secondAttribute="topMargin" constant="2" id="ifk-oD-M48"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Owl-iz-tcp" secondAttribute="bottom" constant="4" id="xXO-pN-jYu"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Owl-iz-tcp" secondAttribute="trailing" constant="2" id="xss-YY-jLC"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="Owl-iz-tcp" id="3Qo-SA-4ha"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
                                 <connections>
-                                    <outlet property="dataSource" destination="8cV-wv-M5f" id="jvQ-Up-4dN"/>
-                                    <outlet property="delegate" destination="8cV-wv-M5f" id="Zda-xN-i6A"/>
+                                    <outlet property="dataSource" destination="8cV-wv-M5f" id="I3f-Vr-Eij"/>
+                                    <outlet property="delegate" destination="8cV-wv-M5f" id="fFu-Ns-yIL"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AGL-q8-jQR" firstAttribute="top" secondItem="Hkg-rh-UNi" secondAttribute="bottom" id="3s1-8R-kpo"/>
-                            <constraint firstAttribute="trailing" secondItem="cKN-ju-VU8" secondAttribute="trailing" id="PQ3-gC-hJb"/>
-                            <constraint firstItem="cKN-ju-VU8" firstAttribute="leading" secondItem="GVQ-2v-e41" secondAttribute="leading" id="RaM-HZ-rIP"/>
-                            <constraint firstItem="cKN-ju-VU8" firstAttribute="top" secondItem="AGL-q8-jQR" secondAttribute="bottom" id="XmV-rn-M3m"/>
-                            <constraint firstItem="AGL-q8-jQR" firstAttribute="leading" secondItem="GVQ-2v-e41" secondAttribute="leading" id="aad-xS-r17"/>
-                            <constraint firstAttribute="trailing" secondItem="AGL-q8-jQR" secondAttribute="trailing" id="nNI-td-7DZ"/>
-                            <constraint firstItem="h1s-rV-zWp" firstAttribute="top" secondItem="cKN-ju-VU8" secondAttribute="bottom" id="pbw-Oc-8td"/>
+                            <constraint firstItem="eSx-AO-kzP" firstAttribute="leading" secondItem="GVQ-2v-e41" secondAttribute="leading" id="4qP-fB-hT0"/>
+                            <constraint firstItem="h1s-rV-zWp" firstAttribute="top" secondItem="eSx-AO-kzP" secondAttribute="bottom" id="VMR-Ax-qzG"/>
+                            <constraint firstAttribute="trailing" secondItem="eSx-AO-kzP" secondAttribute="trailing" id="fQC-zy-Y0v"/>
+                            <constraint firstItem="eSx-AO-kzP" firstAttribute="top" secondItem="Hkg-rh-UNi" secondAttribute="bottom" id="iSM-mH-azh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aqo-PT-vIc">
-                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="Ohh-vR-KLb">
+                        <barButtonItem key="leftBarButtonItem" image="backArrow" id="Ohh-vR-KLb">
                             <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelSearch:" destination="8cV-wv-M5f" id="JLf-q7-Kpc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="SEARCH" id="XwC-4H-IPO">
-                            <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="search:" destination="8cV-wv-M5f" id="M74-ey-BHb"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="FJX-rB-8AA" id="YgE-Ml-5MS"/>
-                        <outlet property="searchResultsTableView" destination="cKN-ju-VU8" id="v55-yA-zzz"/>
+                        <outlet property="searchResultsTable" destination="eSx-AO-kzP" id="tHY-bd-GfR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05C-TD-SMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="FJX-rB-8AA">
                     <connections>
                         <outlet property="delegate" destination="8cV-wv-M5f" id="LJe-wQ-axw"/>
-                        <outlet property="searchBar" destination="AGL-q8-jQR" id="iuR-iv-K15"/>
                         <outlet property="searchContentsController" destination="8cV-wv-M5f" id="8ur-3m-7ib"/>
                         <outlet property="searchResultsDataSource" destination="8cV-wv-M5f" id="oMC-Sv-P65"/>
                         <outlet property="searchResultsDelegate" destination="8cV-wv-M5f" id="F6C-bD-oNt"/>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1698" y="-264"/>
+            <point key="canvasLocation" x="1616" y="-264"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xkE-Uy-uch">

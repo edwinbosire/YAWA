@@ -22,7 +22,7 @@ class Daily {
         temperatureMax = dailyForcast["temperatureMax"] as! Int
         temperatureMin = dailyForcast["temperatureMin"] as! Int
         let iconString = dailyForcast["icon"] as! String
-        weatherIcon = Current.weatherIconFromString(iconString)
+        weatherIcon = Forcast.weatherIconFromString(iconString)
         let dayOneTimeIntValue = dailyForcast["sunriseTime"] as! Int
         time = weeekDateStringFromUnixtime(dayOneTimeIntValue)
 
@@ -32,7 +32,7 @@ class Daily {
 		
 		self.temperatureMax = tempMax
 		self.temperatureMin = tempMin
-		self.weatherIcon = Current.weatherIconFromString(weatherIcon)
+		self.weatherIcon = Forcast.weatherIconFromString(weatherIcon)
 		self.time = weeekDateStringFromUnixtime(time)
 		self.hour = hourStringFromUnixtime(time)
 	}

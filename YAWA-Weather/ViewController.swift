@@ -62,6 +62,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
+		//replace key = london with City.location.locality 
+		let key = "london"
+		if let data = NSUserDefaults.standardUserDefaults().objectForKey(key) as? NSDictionary {
+			
+			let storedCurrentWeather :Forcast = Forcast(weatherDictionary: data)
+			self.populateScreenWithObject(storedCurrentWeather)
+
+		}
 		refresh()
 	}
 	
@@ -75,9 +83,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		refresh()
 	}
 	
-	func getWeatherForLocation(longitude: CLLocationDegrees, latitude: CLLocationDegrees) -> Void {
+	func getWeatherForLocation(location: Location) -> Void {
 		
-		let forcastURL = NSURL(string:"\(latitude),\(longitude)", relativeToURL: Constants.BaseURL)!
+		let forcastURL = NSURL(string:"\(location.latitude),\(location.longitude)", relativeToURL: Constants.BaseURL)!
 		let sesssion  = NSURLSession.sharedSession()
 		let downloadTask: NSURLSessionDownloadTask = sesssion.downloadTaskWithURL(forcastURL, completionHandler: { (locationURL: NSURL!, response:NSURLResponse!, error:NSError!) -> Void in
 			
@@ -85,12 +93,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 				
 				let responseData = NSData(contentsOfURL: locationURL)!
 				let weatherObj: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData, options: nil, error: nil) as! NSDictionary
-				let currentWeather :Current = Current(weatherDictionary: weatherObj)
-				let weeklyWeather :Weekly = Weekly(weatherDictionary: weatherObj)
+				let currentWeather :Forcast = Forcast(weatherDictionary: weatherObj)
+				
+				NSUserDefaults.standardUserDefaults().setObject(weatherObj, forKey: "london")
+				
 				dispatch_async(dispatch_get_main_queue(), { () -> Void in
 					
 					self.populateScreenWithObject(currentWeather)
-					self.populateScreenWithWeeklyData(weeklyWeather)
+				
 				})
 				
 			}else {
@@ -113,7 +123,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		downloadTask.resume()
 	}
 	
-	func populateScreenWithObject(currentWeather: Current) {
+	// MARK: Populate screen with data
+	
+	func populateScreenWithObject(currentWeather: Forcast) {
 		
 		if let icon = currentWeather.icon {
 			self.todaysWeatherIcon.image = icon.tintWithColor(UIColor.blackColor())
@@ -130,51 +142,54 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		}
 		self.todaysWeatherHumidityLabel.text = "\(currentWeather.humidity) %"
 		
-	}
-	
-	func populateScreenWithWeeklyData(weeklyWeather: Weekly) {
 		
 		//Five day forcast
-		let dayOne = weeklyWeather.dayOne()
-		self.weeklyForcastDayOneTemperaturLabel.text = "\(dayOne.temperatureMax)"
-		self.weeklyForcastDayOneIcon.image = dayOne.weatherIcon.tintWithColor(UIColor.blackColor())
-		
-		if let dayOneTime = dayOne.time {
-			self.weeklyForcastDayOneLabel.text = dayOneTime.uppercaseString
-		}
-		
-		let dayTwo = weeklyWeather.dayTwo()
-		self.weeklyForcastDayTwoTemperatureLabel.text = "\(dayTwo.temperatureMax)"
-		self.weeklyForcastDayTwoIcon.image = dayTwo.weatherIcon.tintWithColor(UIColor.blackColor())
-		
-		if let time = dayTwo.time {
-			self.weeklyForcastDayTwoLabel.text = time.uppercaseString
-		}
-		
-		let dayThree = weeklyWeather.dayThree()
-		self.weeklyForcastDayThreeTemperatureLabel.text = "\(dayThree.temperatureMax)"
-		self.weeklyForcastDayThreeIcon.image = dayThree.weatherIcon.tintWithColor(UIColor.blackColor())
-		
-		if let time = dayThree.time {
-			self.weeklyForcastDayThreeLabel.text = time.uppercaseString
-		}
-		
-		let dayFour = weeklyWeather.dayFour()
-		self.weeklyForcastDayFourTemperatureLabel.text = "\(dayFour.temperatureMax)"
-		self.weeklyForcastDayFourIcon.image = dayFour.weatherIcon.tintWithColor(UIColor.blackColor())
-		
-		if let time = dayFour.time {
-			self.weeklyForcastDayFourLabel.text = time.uppercaseString
-		}
-		
-		let dayFive = weeklyWeather.dayFive()
-		self.weeklyForcastDayFiveTemperatureLabel.text = "\(dayFive.temperatureMax)"
-		self.weeklyForcastDayFiveIcon.image = dayFive.weatherIcon.tintWithColor(UIColor.blackColor())
-		
-		if let time = dayFive.time {
-			self.weeklyForcastDayFiveLabel.text = time.uppercaseString
+
+		if let weeklyWeather = currentWeather.weeklyForcast {
+			
+			let dayOne = weeklyWeather.dayOne()
+			self.weeklyForcastDayOneTemperaturLabel.text = "\(dayOne.temperatureMax)"
+			self.weeklyForcastDayOneIcon.image = dayOne.weatherIcon.tintWithColor(UIColor.blackColor())
+			
+			if let dayOneTime = dayOne.time {
+				self.weeklyForcastDayOneLabel.text = dayOneTime.uppercaseString
+			}
+			
+			let dayTwo = weeklyWeather.dayTwo()
+			self.weeklyForcastDayTwoTemperatureLabel.text = "\(dayTwo.temperatureMax)"
+			self.weeklyForcastDayTwoIcon.image = dayTwo.weatherIcon.tintWithColor(UIColor.blackColor())
+			
+			if let time = dayTwo.time {
+				self.weeklyForcastDayTwoLabel.text = time.uppercaseString
+			}
+			
+			let dayThree = weeklyWeather.dayThree()
+			self.weeklyForcastDayThreeTemperatureLabel.text = "\(dayThree.temperatureMax)"
+			self.weeklyForcastDayThreeIcon.image = dayThree.weatherIcon.tintWithColor(UIColor.blackColor())
+			
+			if let time = dayThree.time {
+				self.weeklyForcastDayThreeLabel.text = time.uppercaseString
+			}
+			
+			let dayFour = weeklyWeather.dayFour()
+			self.weeklyForcastDayFourTemperatureLabel.text = "\(dayFour.temperatureMax)"
+			self.weeklyForcastDayFourIcon.image = dayFour.weatherIcon.tintWithColor(UIColor.blackColor())
+			
+			if let time = dayFour.time {
+				self.weeklyForcastDayFourLabel.text = time.uppercaseString
+			}
+			
+			let dayFive = weeklyWeather.dayFive()
+			self.weeklyForcastDayFiveTemperatureLabel.text = "\(dayFive.temperatureMax)"
+			self.weeklyForcastDayFiveIcon.image = dayFive.weatherIcon.tintWithColor(UIColor.blackColor())
+			
+			if let time = dayFive.time {
+				self.weeklyForcastDayFiveLabel.text = time.uppercaseString
+			}
 		}
 	}
+	
+	// MARK: Animation + Refresh 
 	
 	func refresh () {
 		
@@ -185,14 +200,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 				NSLog("Could not retrieve location")
 			}else {
 				self.title = "\(location!.municipality), \(location!.locality)"
+				
+				if let loc = location {
+					self.getWeatherForLocation(loc)
+				}
 			}
 		}
-		
-		locationManager.locationCoordinates = {(coordinates: CLLocationCoordinate2D) -> Void in
-			self.locationCoordinates = coordinates
-			self.getWeatherForLocation(coordinates.longitude, latitude: coordinates.latitude)
-		}
-		
+	
 		//1.Hide elemets
 		
 		self.todaysWeatherIcon.alpha = 0.0
