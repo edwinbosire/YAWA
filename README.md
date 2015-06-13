@@ -5,7 +5,9 @@ I followed a course on TeamTreehouse, an introduction to Swift on my part, and i
 
 This is a simple weather app that retrieves data from [forecast.io](forecast.io), we parse the data and display it on screen.
 
-![Screen shot](http://imgur.com/EYYHOU8.gif)
+<p align="center">
+  <img src="http://i.imgur.com/rJHcX4t.gif" alt="Animated gif">
+</p>
 
 I spent the weekend watching the entire TeamTreehouse course (on 2x ofcourse) and wrote the entire code while standing in my kitchen, basically what am trying to say is the code quality is somewhat lacking.
 
@@ -14,7 +16,8 @@ The UI improvements were done on a different day. Take a look at the **TODO** li
 
 ##TODO
 - Settings screen?
-- Allow user to Add/Edit cusom locations
+- Allow user to Add/Edit custom locations
+- ~~Re-organise and delete locations~~
 - Add paging to support above feature
 - Write tests (Should have started)
 - Publish to the app store
