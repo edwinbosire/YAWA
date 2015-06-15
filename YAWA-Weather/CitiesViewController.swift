@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class CitiesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	
@@ -16,7 +17,9 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 	@IBOutlet weak var editCitiesBarItem: UIBarButtonItem!
 	
 	let reuseIdentifier = "citiesCellReusableCell"
-	var cities: [City] = []
+	var cities = Results<City>?()
+	var delegate: LocationSearchDelegate?
+	var storageManager: StorageManager?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,18 +27,18 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 		self.title = "Your Cities"
 		self.tableView.tableFooterView = UIView.new()
 		
-		//replace key = london with City.location.locality
-		let key = "london"
-		if let data = NSUserDefaults.standardUserDefaults().objectForKey(key) as? NSDictionary {
+		storageManager = StorageManager()
+		
+		reloadCitiesData()
+	}
+	
+	func reloadCitiesData() -> Void {
+		
+		storageManager?.retrieveSortedCities({ (cities, error) -> () in
 			
-			let storedCurrentWeather :Forcast = Forcast(weatherDictionary: data)
-
-			let loc = Location(locality: "London", municipality: "Greenwich", postalCode: "se13 7qf", administrationArea: "Greenwhich", county: "London")
-			let london = City(weather: storedCurrentWeather, location: loc, order: 0)
-			
-			cities = [london]
-			
-		}
+			self.cities = cities;
+			self.tableView.reloadData()
+		})
 	}
 	
 	@IBAction func dismissCurrentView(sender: UIBarButtonItem) {
@@ -56,21 +59,43 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return cities.count;
+		if let collection = cities{
+			return collection.count
+		}
+		
+		return 0
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		var cell: CitiesTableViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CitiesTableViewCell
 		
-		let city = cities[indexPath.row]
-		
-		cell.titleLabel.text = city.location?.municipality
-		cell.timeLabel.text = city.weather?.currentTime
-		
-		if let temp = city.weather?.temperature {
-			cell.temperatureLabel.text = "\(temp)°C"
+		if let myCity = cities {
+			
+			let city = myCity[indexPath.row]
+			
+			if let cityLocation = city.location {
+				
+				var locationName = cityLocation.municipality
+				if (locationName.isEmpty) {
+					locationName = cityLocation.adminArea
+				}
+				if (locationName.isEmpty) {
+					locationName = cityLocation.country
+				}
+				
+				cell.titleLabel.text = locationName
+			}
+			
+			if let cityWeather = city.weather {
+				cell.timeLabel.text = cityWeather.currentTime
+				cell.temperatureLabel.text = "\(cityWeather.temperature)°C"
+				
+			}
 		}
+		
+		
+		
 		
 		return cell
 	}
@@ -83,23 +108,32 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 	func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		return true
 	}
-
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+		
+		let selectedCity = cities![indexPath.row]
+		delegate?.didSelectCity(selectedCity, viewController: self)
+	}
+	
 	func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
 		
-		var itemToMove = cities[sourceIndexPath.row]
-		itemToMove.index = destinationIndexPath.row
-		
-		cities.removeAtIndex(sourceIndexPath.row)
-		cities.insert(itemToMove, atIndex: destinationIndexPath.row)
+		var cityToMove = cities![sourceIndexPath.row]
+		storageManager?.updateCityIndex(cityToMove, index:destinationIndexPath.row, completionHandler: { (success) -> () in
+			
+			self.reloadCitiesData()
+		})
 	}
 	
 	func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		
 		if editingStyle == UITableViewCellEditingStyle.Delete{
-			cities.removeAtIndex(indexPath.row);
-			self.editCities(editCitiesBarItem);
-			tableView.reloadData();
-		
+			var cityToDelete = cities![indexPath.row]
+			
+			storageManager?.deleteCity(cityToDelete, completionHandler: { (successful) -> () in
+				
+				self.reloadCitiesData()
+			})
 		}
 	}
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

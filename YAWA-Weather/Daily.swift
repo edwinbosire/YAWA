@@ -8,34 +8,30 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-class Daily {
+class Daily: Object {
    
-    var temperatureMax: Int
-    var temperatureMin: Int
-    var time: String?
-    var weatherIcon: UIImage
-	var hour: String?
-    
-    init (dailyForcast: NSDictionary) {
+    dynamic var temperatureMax: Int = 0
+    dynamic var temperatureMin: Int = 0
+    dynamic var time: String = ""
+    dynamic var weatherIcon: String = ""
+	dynamic var hour: String = ""
+	
+    func dailyWithDictionary(dailyForcast: NSDictionary) {
         
         temperatureMax = dailyForcast["temperatureMax"] as! Int
         temperatureMin = dailyForcast["temperatureMin"] as! Int
-        let iconString = dailyForcast["icon"] as! String
-        weatherIcon = Forcast.weatherIconFromString(iconString)
+        weatherIcon = dailyForcast["icon"] as! String
         let dayOneTimeIntValue = dailyForcast["sunriseTime"] as! Int
         time = weeekDateStringFromUnixtime(dayOneTimeIntValue)
 
     }
 	
-	init (tempMax: Int, tempMin: Int, weatherIcon: String, time: Int) {
-		
-		self.temperatureMax = tempMax
-		self.temperatureMin = tempMin
-		self.weatherIcon = Forcast.weatherIconFromString(weatherIcon)
-		self.time = weeekDateStringFromUnixtime(time)
-		self.hour = hourStringFromUnixtime(time)
+	func image() -> UIImage {
+		return Forcast.weatherIconFromString(weatherIcon)
 	}
+
 	
     func weeekDateStringFromUnixtime(unixTime: Int) -> String {
         

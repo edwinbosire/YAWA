@@ -8,25 +8,26 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-class Weekly {
+class Weekly: Object {
     
-	var weeklyForcasts = [Daily]()
-	
-    init (weatherDictionary: NSDictionary) {
-        
-        let weeklyWeather = weatherDictionary["daily"] as! NSDictionary
-        
-        let weeklyForcast = weeklyWeather["data"] as! NSArray
-        
-        for dailyDict in weeklyForcast {
-			
-            let dailyForcast = Daily(dailyForcast: dailyDict as! NSDictionary)
-            weeklyForcasts.append(dailyForcast)
-        }
+	let weeklyForcasts = List<Daily>()
+
+	func weatherWithDictionary (weatherDictionary: NSDictionary) -> Void {
 		
-    }
-	
+		let weeklyWeather = weatherDictionary["daily"] as! NSDictionary
+		
+		let weeklyForcast = weeklyWeather["data"] as! NSArray
+		
+		for dailyDict in weeklyForcast {
+			
+			let dailyForcast = Daily()
+			dailyForcast.dailyWithDictionary(dailyDict as! NSDictionary)
+			weeklyForcasts.append(dailyForcast)
+		}
+		
+	}
 	func dayOne() -> Daily {
 		return weeklyForcasts[0]
 	}

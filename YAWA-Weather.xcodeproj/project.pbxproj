@@ -57,6 +57,16 @@
 		96C1345F1B2A5EB30014759A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1345D1B2A5EB30014759A /* SearchTableViewCell.swift */; };
 		96C134611B2C61A20014759A /* LocationSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C134601B2C61A20014759A /* LocationSearchDelegate.swift */; };
 		96C134621B2C61A20014759A /* LocationSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C134601B2C61A20014759A /* LocationSearchDelegate.swift */; };
+		96C134651B2C794E0014759A /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C134641B2C794E0014759A /* Animator.swift */; };
+		96C134661B2C794E0014759A /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C134641B2C794E0014759A /* Animator.swift */; };
+		96D8FA721B2C8A5D00657250 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FA711B2C8A5D00657250 /* StorageManager.swift */; };
+		96D8FA731B2C8A5D00657250 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FA711B2C8A5D00657250 /* StorageManager.swift */; };
+		96D8FA781B2C99B700657250 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D8FA751B2C99B700657250 /* Realm.framework */; };
+		96D8FA7A1B2C99B700657250 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D8FA761B2C99B700657250 /* RealmSwift.framework */; };
+		96D8FA7B1B2C99E100657250 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D8FA751B2C99B700657250 /* Realm.framework */; };
+		96D8FA7C1B2C99E100657250 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96D8FA751B2C99B700657250 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		96D8FA7D1B2C99E100657250 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D8FA761B2C99B700657250 /* RealmSwift.framework */; };
+		96D8FA7E1B2C99E100657250 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96D8FA761B2C99B700657250 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DC24051B091D5E003FF892 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC24041B091D5E003FF892 /* AppDelegate.swift */; };
 		96DC24071B091D5E003FF892 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC24061B091D5E003FF892 /* ViewController.swift */; };
 		96DC240A1B091D5E003FF892 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC24081B091D5E003FF892 /* Main.storyboard */; };
@@ -78,6 +88,21 @@
 			remoteInfo = "YAWA-Weather";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		96D8FA7F1B2C99E200657250 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				96D8FA7E1B2C99E100657250 /* RealmSwift.framework in Embed Frameworks */,
+				96D8FA7C1B2C99E100657250 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		964F321D1B1F9A31008A43BF /* YAWA-Weather-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YAWA-Weather-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -104,6 +129,10 @@
 		96C1345A1B2A59D30014759A /* SearchDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDisplayViewController.swift; sourceTree = "<group>"; };
 		96C1345D1B2A5EB30014759A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		96C134601B2C61A20014759A /* LocationSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchDelegate.swift; sourceTree = "<group>"; };
+		96C134641B2C794E0014759A /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		96D8FA711B2C8A5D00657250 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		96D8FA751B2C99B700657250 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Libraries/Realm/Realm.framework; sourceTree = SOURCE_ROOT; };
+		96D8FA761B2C99B700657250 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Libraries/Realm/RealmSwift.framework; sourceTree = SOURCE_ROOT; };
 		96DC23FF1B091D5E003FF892 /* YAWA-Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YAWA-Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DC24031B091D5E003FF892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96DC24041B091D5E003FF892 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -125,6 +154,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96D8FA7D1B2C99E100657250 /* RealmSwift.framework in Frameworks */,
+				96D8FA7B1B2C99E100657250 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +163,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96D8FA7A1B2C99B700657250 /* RealmSwift.framework in Frameworks */,
+				96D8FA781B2C99B700657250 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +206,23 @@
 			name = Protocol;
 			sourceTree = "<group>";
 		};
+		96D8FA701B2C895200657250 /* Database controller */ = {
+			isa = PBXGroup;
+			children = (
+				96D8FA711B2C8A5D00657250 /* StorageManager.swift */,
+			);
+			name = "Database controller";
+			sourceTree = "<group>";
+		};
+		96D8FA741B2C997C00657250 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				96D8FA751B2C99B700657250 /* Realm.framework */,
+				96D8FA761B2C99B700657250 /* RealmSwift.framework */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		96DC23F61B091D5E003FF892 = {
 			isa = PBXGroup;
 			children = (
@@ -196,11 +246,13 @@
 			children = (
 				96DC24041B091D5E003FF892 /* AppDelegate.swift */,
 				96DC24291B092AE3003FF892 /* Constants.swift */,
+				96DC240B1B091D5E003FF892 /* Images.xcassets */,
 				96C134631B2C61A70014759A /* Protocol */,
 				96DC24241B091E32003FF892 /* Controller */,
 				96DC24271B091E7A003FF892 /* Model */,
 				96DC24281B091E87003FF892 /* View */,
-				96DC240B1B091D5E003FF892 /* Images.xcassets */,
+				96D8FA701B2C895200657250 /* Database controller */,
+				96D8FA741B2C997C00657250 /* Libraries */,
 				964F32231B1F9A3A008A43BF /* Utilities */,
 				96DC24021B091D5E003FF892 /* Supporting Files */,
 				964F321D1B1F9A31008A43BF /* YAWA-Weather-Bridging-Header.h */,
@@ -243,6 +295,7 @@
 				969603681B26048100A6A690 /* LocationManager.swift */,
 				96C1343B1B2714C90014759A /* CitiesViewController.swift */,
 				96C1345A1B2A59D30014759A /* SearchDisplayViewController.swift */,
+				96C134641B2C794E0014759A /* Animator.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -280,6 +333,8 @@
 				96DC23FB1B091D5E003FF892 /* Sources */,
 				96DC23FC1B091D5E003FF892 /* Frameworks */,
 				96DC23FD1B091D5E003FF892 /* Resources */,
+				96D8FA7F1B2C99E200657250 /* Embed Frameworks */,
+				96D8FA801B2C9A2300657250 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -387,6 +442,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		96D8FA801B2C9A2300657250 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\" ";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		96DC23FB1B091D5E003FF892 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -398,7 +469,9 @@
 				964F32441B1F9D60008A43BF /* NavigationController.swift in Sources */,
 				96C1344B1B2742380014759A /* City.swift in Sources */,
 				969603691B26048100A6A690 /* LocationManager.swift in Sources */,
+				96C134651B2C794E0014759A /* Animator.swift in Sources */,
 				969603671B25DEA900A6A690 /* UIImage+Tinting.swift in Sources */,
+				96D8FA721B2C8A5D00657250 /* StorageManager.swift in Sources */,
 				96DC24261B091E74003FF892 /* Current.swift in Sources */,
 				96DC24071B091D5E003FF892 /* ViewController.swift in Sources */,
 				964F32211B1F9A33008A43BF /* UIColor+FlatColors.m in Sources */,
@@ -419,9 +492,11 @@
 				96C134521B2748F20014759A /* AppDelegate.swift in Sources */,
 				96C1344F1B2743FA0014759A /* Weekly.swift in Sources */,
 				96C134511B2748EA0014759A /* Current.swift in Sources */,
+				96C134661B2C794E0014759A /* Animator.swift in Sources */,
 				96C1344C1B2742380014759A /* City.swift in Sources */,
 				964F32221B1F9A33008A43BF /* UIColor+FlatColors.m in Sources */,
 				96C1345C1B2A59D30014759A /* SearchDisplayViewController.swift in Sources */,
+				96D8FA731B2C8A5D00657250 /* StorageManager.swift in Sources */,
 				96C1344E1B2743D80014759A /* Location.swift in Sources */,
 				96C134401B271C910014759A /* CitiesTableViewCell.swift in Sources */,
 				96C1343D1B2714C90014759A /* CitiesViewController.swift in Sources */,
@@ -553,6 +628,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/Realm",
+				);
 				INFOPLIST_FILE = "YAWA-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -567,6 +646,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/Realm",
+				);
 				INFOPLIST_FILE = "YAWA-Weather/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -583,6 +666,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/Realm",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -605,6 +689,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/Realm",
 				);
 				INFOPLIST_FILE = "YAWA-WeatherTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

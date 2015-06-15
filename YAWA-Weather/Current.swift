@@ -8,30 +8,21 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-class Forcast : NSObject {
+class Forcast: Object {
     
-    var currentTime: String?
-    var temperature: Int
-    var humidity: Double
-    var precipProbability: Double
-	var windSpeed: Int
-	var windDirection: String?
-    var summary: String
-    var icon: UIImage?
-	var weeklyForcast: Weekly?
+    dynamic var currentTime: String = ""
+    dynamic var temperature: Int = 0
+    dynamic var humidity: Double = 0.0
+    dynamic var precipProbability: Double = 0.0
+	dynamic var windSpeed: Int = 0
+	dynamic var windDirection: String = ""
+    dynamic var summary: String = ""
+    dynamic var icon: String = ""
+	dynamic var weeklyForcast: Weekly?
 	
-	override init() {
-		temperature = 0
-		humidity = 0.0
-		precipProbability = 0.0
-		windSpeed = 0
-		summary = ""
-		windDirection = ""
-		currentTime = ""
-	}
-	
-    init(weatherDictionary: NSDictionary) {
+    func forcastWithDictionar(weatherDictionary: NSDictionary) -> Void{
 		
         let currentWeather = weatherDictionary["currently"] as! NSDictionary
         
@@ -40,9 +31,6 @@ class Forcast : NSObject {
         precipProbability = currentWeather["precipProbability"] as! Double
 		windSpeed = currentWeather["windSpeed"] as! Int
         summary = currentWeather["summary"] as! String
-		weeklyForcast = Weekly(weatherDictionary: weatherDictionary)
-		
-		super.init()
 		
 		let windDirectionDegrees  = currentWeather["windBearing"] as! Int
 		windDirection = self.windDirectionFromDegress(windDirectionDegrees)
@@ -50,8 +38,7 @@ class Forcast : NSObject {
         let currentTimeIntVale = currentWeather["time"] as! Int
         currentTime = dateStringFromUnixTime(currentTimeIntVale)
         
-        let iconString = currentWeather["icon"] as! String
-        icon = Forcast.weatherIconFromString(iconString)
+        icon = currentWeather["icon"] as! String
     }
 
 	
@@ -83,7 +70,12 @@ class Forcast : NSObject {
         
         return dateFormatter.stringFromDate(weatherDate)
     }
-    
+	
+	func image() ->UIImage {
+		
+		return Forcast.weatherIconFromString(icon)
+	}
+	
   static  func weatherIconFromString(stringIcon: String) -> UIImage {
         var imageName: String
         

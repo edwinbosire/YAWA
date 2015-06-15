@@ -12,6 +12,7 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 
 	var delegate: LocationSearchDelegate?
 	var tableData = [Location]()
+	let locationManager = LocationManager()
 	let searchController = UISearchController(searchResultsController: nil)
 	
 	@IBOutlet weak var searchResultsTable: UITableView!
@@ -40,12 +41,9 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 	
 	@IBAction func cancelSearch(sender: AnyObject) {
 		
-		if searchController.searchBar.isFirstResponder() {
-			searchController.searchBar.resignFirstResponder()
-		}
-		tableData = []
-//		navigationController?.dismissViewControllerAnimated(true, completion: nil)
-		delegate?.dismissSearchViewController()
+		searchController.active = false
+		
+		delegate?.dismissViewController(self)
 	}
 	
  // MARK: - Table view data source
@@ -77,9 +75,9 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 		cell.textLabel?.text = "\(locality)"
 	
 		if (locality.isEmpty){
-			cell.textLabel?.text = "\(location.county)"
+			cell.textLabel?.text = "\(location.country)"
 		}else {
-			cell.detailTextLabel?.text = "\(location.county)"
+			cell.detailTextLabel?.text = "\(location.country)"
 		}
 		return cell
 	}
@@ -92,9 +90,10 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
-		
+
+		searchController.active = false
 		let selectedLocation = tableData[indexPath.row]
-		delegate?.didPickLocation(selectedLocation)
+		delegate?.didSelectLocation(selectedLocation, viewController: self)
 	}
 	//MARK: - UISearchControllerDelegate
 	
@@ -104,7 +103,7 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 	//MARK: UISearchResultsUpdater delegate
 	
 	func updateSearchResultsForSearchController(searchController: UISearchController) {
-		
+
 		UIView.animateWithDuration(0.3, animations: { () -> Void in
 			if self.tableData.isEmpty {
 				self.badgeView.alpha = 1.0
@@ -114,9 +113,7 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 				self.searchResultsTable.alpha = 1.0
 			}
 		})
-		
-		let locationManager = LocationManager.init()
-		
+	
 		let searchTerms = searchController.searchBar.text
 		if ( count(searchTerms) > 1) {
 			

@@ -7,24 +7,16 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-class Location {
-	var locality: String
-	var municipality: String
-	var postalCode: String
-	var adminArea: String
-	var county: String
-	var latitude: Double = 0.0
-	var longitude: Double = 0.0
+class Location: Object {
 	
-	init(locality: String, municipality: String, postalCode: String, administrationArea: String, county: String) {
-		
-		self.locality = locality
-		self.municipality = municipality
-		self.postalCode = postalCode
-		self.adminArea = administrationArea
-		self.county = county
-	}
+	dynamic var locality: String = ""
+	dynamic var municipality: String = ""
+	dynamic var postalCode: String = ""
+	dynamic var adminArea: String = ""
+	dynamic var country: String = ""
+	dynamic var latitude: Double = 0.0
+	dynamic var longitude: Double = 0.0
 	
 }

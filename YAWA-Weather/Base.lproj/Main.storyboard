@@ -346,7 +346,7 @@
                         <barButtonItem key="leftBarButtonItem" image="burgerButton" id="WNT-bo-jCf">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="824-Eu-2Rk" kind="modal" id="pkW-qN-fYq"/>
+                                <action selector="presentCitiesListViewController:" destination="vXZ-lx-hvc" id="sUK-da-Vhi"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="plusButton" id="ccm-5k-ro8">
@@ -390,7 +390,7 @@
         <!--Cities View Controller-->
         <scene sceneID="HMC-l2-ysH">
             <objects>
-                <viewController id="lDf-ur-IyF" customClass="CitiesViewController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cityListDisplay" id="lDf-ur-IyF" customClass="CitiesViewController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pzu-G2-79c"/>
                         <viewControllerLayoutGuide type="bottom" id="L5C-fr-FAg"/>
@@ -497,6 +497,7 @@
         <!--Navigation Controller-->
         <scene sceneID="jZg-Um-3V4">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="klK-gx-c7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WlD-bA-y1a" customClass="NavigationController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rd9-5k-ozD">
@@ -508,7 +509,6 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="ZbY-Pz-y22"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="klK-gx-c7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="268" y="368"/>
         </scene>
@@ -619,8 +619,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Lce-0r-nvk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZtY-u9-xpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ul9-iM-9WF" customClass="NavigationController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="searchDisplayNavigation" automaticallyAdjustsScrollViewInsets="NO" id="ul9-iM-9WF" customClass="NavigationController" customModule="YAWA_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cn4-JP-2e6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -631,6 +630,7 @@
                         <segue destination="8cV-wv-M5f" kind="relationship" relationship="rootViewController" id="1be-60-Vt8"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZtY-u9-xpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1166" y="-264"/>
         </scene>

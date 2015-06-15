@@ -8,8 +8,5 @@
 
 import Foundation
 
-
-struct Constants {
-    static let APIKey = "d0f2d7b4f0e23a0bf37a386ad905fc03"
-    static let BaseURL: NSURL = NSURL(string: "https://api.forecast.io/forecast/\(APIKey)/")!
-}
+let kAPIKey = "d0f2d7b4f0e23a0bf37a386ad905fc03"
+let kBaseURL: NSURL = NSURL(string: "https://api.forecast.io/forecast/\(kAPIKey)/")!

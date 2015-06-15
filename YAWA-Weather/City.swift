@@ -7,23 +7,14 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct City {
+class City: Object {
 	
-	var weather: Forcast?
-	let location: Location?
-	var index: Int = 0
+	dynamic var weather: Forcast?
+	dynamic var location: Location?
+	dynamic var index: Int = 0
 	
-	init(weather: Forcast?, location: Location, order: Int?){
-		
-		if let currentWeather = weather {
-			self.weather = currentWeather
-		}
-		
-		self.location = location
-		
-		if let ndx = order {
-			self.index = ndx
-		}
-	}
 }
+
+

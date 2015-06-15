@@ -98,8 +98,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 				let country = (myLocation.country != nil) ? myLocation.country : ""
 				let municipality = (myLocation.subLocality != nil) ? myLocation.subLocality : ""
 				
-				let locationItem = Location(locality: locality, municipality: municipality, postalCode: postalCode, administrationArea: administrativeArea, county: country)
-				
+				let locationItem = Location()
+				locationItem.locality = locality
+				locationItem.municipality = municipality
+				locationItem.postalCode = postalCode
+				locationItem.adminArea = administrativeArea
+				locationItem.country = country
+								
 				let locationCollection = locations as NSArray
 				if let singleLocation = locationCollection.lastObject as? CLLocation {
 
@@ -155,7 +160,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 					let country = (placemark.country != nil) ? placemark.country : ""
 					let municipality = (placemark.subLocality != nil) ? placemark.subLocality : ""
 					
-					let locationItem = Location(locality: locality, municipality: municipality, postalCode: postalCode, administrationArea: administrativeArea, county: country)
+					let locationItem = Location()
+					locationItem.locality = locality
+					locationItem.municipality = municipality
+					locationItem.postalCode = postalCode
+					locationItem.adminArea = administrativeArea
+					locationItem.country = country
 					
 					searchResultsLocations.append(locationItem)
 					completionHandler(searchResultsLocations, error)

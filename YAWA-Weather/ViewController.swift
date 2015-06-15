@@ -48,8 +48,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, LocationSearc
 	
 	var locationManager: LocationManager!
 	var searchDisplayViewController: SearchDisplayViewController!
+	var cititesViewController: CitiesViewController!
 	var locationCoordinates: CLLocationCoordinate2D!
 	var doubleTapGesture: UITapGestureRecognizer = UITapGestureRecognizer()
+	var myCity: City?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -58,25 +60,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, LocationSearc
 		doubleTapGesture.numberOfTapsRequired = 2
 		doubleTapGesture.addTarget(self, action: "doubleTapRefresh")
 		self.view.addGestureRecognizer(doubleTapGesture)
-	}
-	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
 		
-		//replace key = london with City.location.locality 
-		let key = "london"
-		if let data = NSUserDefaults.standardUserDefaults().objectForKey(key) as? NSDictionary {
-			
-			let storedCurrentWeather :Forcast = Forcast(weatherDictionary: data)
-			self.populateScreenWithObject(storedCurrentWeather)
-
-		}
-		refresh()
-	}
-	
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+		//		refresh()
+		
 	}
 	
 	func doubleTapRefresh() -> Void {
@@ -87,15 +73,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, LocationSearc
 	@IBAction func presentSearchViewController(sender: AnyObject) {
 		
 		searchDisplayViewController = storyboard?.instantiateViewControllerWithIdentifier("searchDisplay") as! SearchDisplayViewController
-		searchDisplayViewController.delegate  = self
+		searchDisplayViewController?.delegate  = self
 		var navigation = NavigationController(rootViewController: searchDisplayViewController)
 		
 		self.navigationController?.presentViewController(navigation, animated: true, completion: nil)
 	}
 	
-	func getWeatherForLocation(location: Location) -> Void {
+	@IBAction func presentCitiesListViewController(sender: AnyObject) {
 		
-		let forcastURL = NSURL(string:"\(location.latitude),\(location.longitude)", relativeToURL: Constants.BaseURL)!
+		cititesViewController = storyboard?.instantiateViewControllerWithIdentifier("cityListDisplay") as! CitiesViewController
+		cititesViewController?.delegate  = self
+		var navigation = NavigationController(rootViewController: cititesViewController)
+		
+		self.navigationController?.presentViewController(navigation, animated: true, completion: nil)
+		
+	}
+	
+	func getWeatherForLocation(location: Location, city: City?) -> Void {
+		
+		let forcastURL = NSURL(string:"\(location.latitude),\(location.longitude)", relativeToURL: kBaseURL)!
 		let sesssion  = NSURLSession.sharedSession()
 		let downloadTask: NSURLSessionDownloadTask = sesssion.downloadTaskWithURL(forcastURL, completionHandler: { (locationURL: NSURL!, response:NSURLResponse!, error:NSError!) -> Void in
 			
@@ -103,14 +99,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, LocationSearc
 				
 				let responseData = NSData(contentsOfURL: locationURL)!
 				let weatherObj: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData, options: nil, error: nil) as! NSDictionary
-				let currentWeather :Forcast = Forcast(weatherDictionary: weatherObj)
-				
-				NSUserDefaults.standardUserDefaults().setObject(weatherObj, forKey: "london")
+				let currentWeather :Forcast = Forcast()
+				var weeklyForecast = Weekly()
+
 				
 				dispatch_async(dispatch_get_main_queue(), { () -> Void in
 					
-					self.populateScreenWithObject(currentWeather)
-				
+					let storageManager = StorageManager()
+					
+					storageManager.realm.write({ () -> Void in
+						
+						currentWeather.forcastWithDictionar(weatherObj)
+						weeklyForecast.weatherWithDictionary(weatherObj)
+						currentWeather.weeklyForcast = weeklyForecast
+
+					})
+					storageManager.addCity(currentWeather, location: location, index:0, completionHandler: { (city, successful) -> () in
+						
+						self.populateScreenWithObject(currentWeather)
+						self.myCity = city
+						
+						let altTitle = (location.locality.isEmpty) ? "\(location.adminArea)" : "\(location.locality), "
+						var adminArea = (location.municipality.isEmpty) ? "\(altTitle)" : "\(location.municipality), "
+						adminArea = (adminArea.isEmpty) ? "\(location.country)" : "\(adminArea)"
+						self.title = "\(adminArea)"
+						
+					})
+					
 				})
 				
 			}else {
@@ -137,71 +152,54 @@ class ViewController: UIViewController, CLLocationManagerDelegate, LocationSearc
 	
 	func populateScreenWithObject(currentWeather: Forcast) {
 		
-		if let icon = currentWeather.icon {
-			self.todaysWeatherIcon.image = icon.tintWithColor(UIColor.blackColor())
-		}
-		if let time = currentWeather.currentTime {
-			self.todaysWeatherDateLabel.text = "\(time.uppercaseString) "
-		}
+		self.todaysWeatherIcon.image = currentWeather.image().tintWithColor(UIColor.blackColor())
+		
+		self.todaysWeatherDateLabel.text = "\(currentWeather.currentTime.uppercaseString) "
+		
 		
 		self.todaysWeatherTemperatureLabel.text = "\(currentWeather.temperature)°"
 		self.todaysWeatherWindSpeedLabel.text = "\(currentWeather.windSpeed) MPH"
 		
-		if let direction = currentWeather.windDirection {
-			self.todaysWeatherWindDirectionLabel.text = "\(direction.uppercaseString)"
-		}
+		self.todaysWeatherWindDirectionLabel.text = "\(currentWeather.windDirection.uppercaseString)"
+		
 		self.todaysWeatherHumidityLabel.text = "\(currentWeather.humidity) %"
 		
 		
 		//Five day forcast
-
+		
 		if let weeklyWeather = currentWeather.weeklyForcast {
 			
 			let dayOne = weeklyWeather.dayOne()
 			self.weeklyForcastDayOneTemperaturLabel.text = "\(dayOne.temperatureMax)"
-			self.weeklyForcastDayOneIcon.image = dayOne.weatherIcon.tintWithColor(UIColor.blackColor())
+			self.weeklyForcastDayOneIcon.image = dayOne.image().tintWithColor(UIColor.blackColor())
 			
-			if let dayOneTime = dayOne.time {
-				self.weeklyForcastDayOneLabel.text = dayOneTime.uppercaseString
-			}
+			self.weeklyForcastDayOneLabel.text = dayOne.time.uppercaseString
 			
 			let dayTwo = weeklyWeather.dayTwo()
 			self.weeklyForcastDayTwoTemperatureLabel.text = "\(dayTwo.temperatureMax)"
-			self.weeklyForcastDayTwoIcon.image = dayTwo.weatherIcon.tintWithColor(UIColor.blackColor())
-			
-			if let time = dayTwo.time {
-				self.weeklyForcastDayTwoLabel.text = time.uppercaseString
-			}
+			self.weeklyForcastDayTwoIcon.image = dayTwo.image().tintWithColor(UIColor.blackColor())
+			self.weeklyForcastDayTwoLabel.text = dayTwo.time.uppercaseString
 			
 			let dayThree = weeklyWeather.dayThree()
 			self.weeklyForcastDayThreeTemperatureLabel.text = "\(dayThree.temperatureMax)"
-			self.weeklyForcastDayThreeIcon.image = dayThree.weatherIcon.tintWithColor(UIColor.blackColor())
-			
-			if let time = dayThree.time {
-				self.weeklyForcastDayThreeLabel.text = time.uppercaseString
-			}
+			self.weeklyForcastDayThreeIcon.image = dayThree.image().tintWithColor(UIColor.blackColor())
+			self.weeklyForcastDayThreeLabel.text = dayThree.time.uppercaseString
 			
 			let dayFour = weeklyWeather.dayFour()
 			self.weeklyForcastDayFourTemperatureLabel.text = "\(dayFour.temperatureMax)"
-			self.weeklyForcastDayFourIcon.image = dayFour.weatherIcon.tintWithColor(UIColor.blackColor())
-			
-			if let time = dayFour.time {
-				self.weeklyForcastDayFourLabel.text = time.uppercaseString
-			}
+			self.weeklyForcastDayFourIcon.image = dayFour.image().tintWithColor(UIColor.blackColor())
+			self.weeklyForcastDayFourLabel.text = dayFour.time.uppercaseString
 			
 			let dayFive = weeklyWeather.dayFive()
 			self.weeklyForcastDayFiveTemperatureLabel.text = "\(dayFive.temperatureMax)"
-			self.weeklyForcastDayFiveIcon.image = dayFive.weatherIcon.tintWithColor(UIColor.blackColor())
-			
-			if let time = dayFive.time {
-				self.weeklyForcastDayFiveLabel.text = time.uppercaseString
-			}
+			self.weeklyForcastDayFiveIcon.image = dayFive.image().tintWithColor(UIColor.blackColor())
+			self.weeklyForcastDayFiveLabel.text = dayFive.time.uppercaseString
 		}
 	}
 	
-	// MARK: Animation + Refresh 
+	// MARK: Animation + Refresh
 	
-	func refresh () {
+	func refresh() {
 		
 		locationManager = LocationManager.init()
 		locationManager.locationBlock = {(location: Location?, error: NSError?) -> Void in
@@ -212,11 +210,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, LocationSearc
 				self.title = "\(location!.municipality), \(location!.locality)"
 				
 				if let loc = location {
-					self.getWeatherForLocation(loc)
+					self.getWeatherForLocation(loc, city: self.myCity!)
 				}
 			}
 		}
-	
+		
 		//1.Hide elemets
 		
 		self.todaysWeatherIcon.alpha = 0.0
@@ -420,40 +418,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, LocationSearc
 		
 	}
 	
-	func springWithDelay(duration: NSTimeInterval, delay: NSTimeInterval, animations: (() -> Void)!) {
-		
-		UIView.animateWithDuration(duration, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: nil, animations: {
-			
-			animations()
-			
-			}, completion: { finished in
-				
-		})
-		
-	}
-	func springWithDelay(duration: NSTimeInterval, delay: NSTimeInterval, dampingRation: CGFloat,  animations: (() -> Void)!) {
-		
-		UIView.animateWithDuration(duration, delay: delay, usingSpringWithDamping: dampingRation, initialSpringVelocity: 0.8, options: nil, animations: {
-			
-			animations()
-			
-			}, completion: { finished in
-				
-		})
-	}
-	
 	//MARK: Location Delegate
 	
-	func dismissSearchViewController() {
-		searchDisplayViewController?.dismissViewControllerAnimated(true, completion:nil)
-
+	func dismissViewController(viewController: AnyObject) {
+		let vc = viewController as! UIViewController
+		vc.dismissViewControllerAnimated(true, completion:nil)
 	}
-	func didPickLocation(selectedLocation: Location) {
+	
+	func didSelectLocation(selectedLocation: Location, viewController: AnyObject) {
+		
+		let searchVC = viewController as! SearchDisplayViewController
+		searchVC.dismissViewControllerAnimated(true, completion:nil)
 
-		NSLog(" location selected \(selectedLocation.adminArea)")
-		searchDisplayViewController?.dismissViewControllerAnimated(true, completion: { () -> Void in
-			
-		})
+		self.getWeatherForLocation(selectedLocation, city: nil)
+		
+	}
+	
+	func didSelectCity(selectedCity: City, viewController: AnyObject) {
+		
+		let listVC = viewController as! CitiesViewController
+		listVC.dismissViewControllerAnimated(true, completion:nil)
+		
+		if let cityWeather = selectedCity.weather {
+			populateScreenWithObject(cityWeather)
+		}
+		
+		if let cityLocation = selectedCity.location {
+			getWeatherForLocation(cityLocation, city: selectedCity)
+		}
 	}
 }
 
