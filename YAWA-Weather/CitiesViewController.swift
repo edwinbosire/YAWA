@@ -17,6 +17,7 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 	
 	let reuseIdentifier = "citiesCellReusableCell"
 	var cities: [City] = []
+	var delegate: LocationSearchDelegate?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,18 +25,12 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 		self.title = "Your Cities"
 		self.tableView.tableFooterView = UIView.new()
 		
-		//replace key = london with City.location.locality
-		let key = "london"
-		if let data = NSUserDefaults.standardUserDefaults().objectForKey(key) as? NSDictionary {
-			
-			let storedCurrentWeather :Forcast = Forcast(weatherDictionary: data)
-
-			let loc = Location(locality: "London", municipality: "Greenwich", postalCode: "se13 7qf", administrationArea: "Greenwhich", county: "London")
-			let london = City(weather: storedCurrentWeather, location: loc, order: 0)
-			
-			cities = [london]
-			
-		}
+		reloadData()
+	}
+	
+	func reloadData() {
+		cities = City.fetchCities()
+		tableView.reloadData()
 	}
 	
 	@IBAction func dismissCurrentView(sender: UIBarButtonItem) {
@@ -62,16 +57,20 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		var cell: CitiesTableViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CitiesTableViewCell
-		
 		let city = cities[indexPath.row]
 		
-		cell.titleLabel.text = city.location?.municipality
-		cell.timeLabel.text = city.weather?.currentTime
-		
-		if let temp = city.weather?.temperature {
-			cell.temperatureLabel.text = "\(temp)°C"
+		var locationName = city.location.municipality
+		if (locationName.isEmpty) {
+			locationName = city.location.adminArea
+		}
+		if (locationName.isEmpty) {
+			locationName = city.location.country
 		}
 		
+		cell.titleLabel.text = locationName
+		cell.timeLabel.text = city.weather.time
+		cell.temperatureLabel.text = "\(city.weather.temperature)°C"
+	
 		return cell
 	}
 	
@@ -84,6 +83,13 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 		return true
 	}
 
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+		
+		let city = cities[indexPath.row]
+		delegate?.didSelectCity(city, viewController:self)
+	}
+	
 	func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
 		
 		var itemToMove = cities[sourceIndexPath.row]
@@ -96,9 +102,12 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 	func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 		
 		if editingStyle == UITableViewCellEditingStyle.Delete{
-			cities.removeAtIndex(indexPath.row);
+			
+			let city = cities[indexPath.row]
+			StoreManager.sharedInstance.managedObjectContext?.deleteObject(city)
+			
 			self.editCities(editCitiesBarItem);
-			tableView.reloadData();
+			reloadData()
 		
 		}
 	}

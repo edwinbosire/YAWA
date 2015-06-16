@@ -7,9 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 protocol LocationSearchDelegate {
 	
-	func didPickLocation(selectedLocation: Location)
-	func dismissSearchViewController()
+	func didSelectLocation(selectedLocation: Location)
+	
+	func didSelectCity(city: City, viewController: UIViewController)
+	
+	func dismissSearchViewController(viewController : UIViewController)
 }

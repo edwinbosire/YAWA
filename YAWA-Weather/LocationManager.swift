@@ -92,42 +92,17 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 			if placemark != nil {
 				
 				let myLocation = placemark[0] as! CLPlacemark
-				let locality = (myLocation.locality != nil) ? myLocation.locality : ""
-				let postalCode = (myLocation.postalCode != nil) ? myLocation.postalCode : ""
-				let administrativeArea = (myLocation.administrativeArea != nil) ? myLocation.administrativeArea : ""
-				let country = (myLocation.country != nil) ? myLocation.country : ""
-				let municipality = (myLocation.subLocality != nil) ? myLocation.subLocality : ""
-				
-				let locationItem = Location(locality: locality, municipality: municipality, postalCode: postalCode, administrationArea: administrativeArea, county: country)
-				
-				let locationCollection = locations as NSArray
-				if let singleLocation = locationCollection.lastObject as? CLLocation {
-
-					let coordinates = singleLocation.coordinate
-					locationItem.latitude = coordinates.latitude
-					locationItem.longitude = coordinates.longitude
-				}
-				
+				let locationItem = Location.locationWithPlacemark(myLocation)
 				
 				if self.locationBlock != nil {
-					
 					self.locationBlock!(locationItem, nil)
 				}
-
 			}
-			
-			
 		})
 		
-		/* How about we include the lat & lon as part of the location object and return only one block */
-		
 		if (locationLock == false) {
-			
 			locationLock = true
-			
-			
 		}
-
 	}
 	
 	//MARK: Forward geocoding
@@ -143,19 +118,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 			}
 				
 			else if let allPlacemarks = placemarks {
+				
 				NSLog(" there are \(allPlacemarks.count) locations found" )
+				
 				for aMark in allPlacemarks {
 					
 					var placemark:CLPlacemark = aMark as! CLPlacemark
-					var coordinates:CLLocationCoordinate2D = placemark.location.coordinate
-					
-					let locality = (placemark.locality != nil) ? placemark.locality : ""
-					let postalCode = (placemark.postalCode != nil) ? placemark.postalCode : ""
-					let administrativeArea = (placemark.administrativeArea != nil) ? placemark.administrativeArea : ""
-					let country = (placemark.country != nil) ? placemark.country : ""
-					let municipality = (placemark.subLocality != nil) ? placemark.subLocality : ""
-					
-					let locationItem = Location(locality: locality, municipality: municipality, postalCode: postalCode, administrationArea: administrativeArea, county: country)
+					let locationItem = Location.locationWithPlacemark(placemark)
 					
 					searchResultsLocations.append(locationItem)
 					completionHandler(searchResultsLocations, error)

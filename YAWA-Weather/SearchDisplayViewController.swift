@@ -40,12 +40,10 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 	
 	@IBAction func cancelSearch(sender: AnyObject) {
 		
-		if searchController.searchBar.isFirstResponder() {
-			searchController.searchBar.resignFirstResponder()
-		}
+		searchController.active = false
 		tableData = []
 //		navigationController?.dismissViewControllerAnimated(true, completion: nil)
-		delegate?.dismissSearchViewController()
+		delegate?.dismissSearchViewController(self)
 	}
 	
  // MARK: - Table view data source
@@ -93,8 +91,9 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
 		
+		searchController.active = false
 		let selectedLocation = tableData[indexPath.row]
-		delegate?.didPickLocation(selectedLocation)
+		delegate?.didSelectLocation(selectedLocation)
 	}
 	//MARK: - UISearchControllerDelegate
 	
