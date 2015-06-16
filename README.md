@@ -16,7 +16,8 @@ The UI improvements were done on a different day. Take a look at the **TODO** li
 
 ##TODO
 - Settings screen?
-- Allow user to Add/Edit custom locations
+- ~~Data Persistence to allow offline usage~~ (Why would you want stale weather info? I don't know, maybe some people dig this stuff)
+- ~~Allow user to Add/Edit custom locations~~
 - ~~Re-organise and delete locations~~
 - Add paging to support above feature
 - Write tests (Should have started)
