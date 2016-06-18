@@ -425,7 +425,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, LocationSearc
     
     func didSelectCity(city: City, viewController: UIViewController) {
         
-        
+        let currentLocation = city.location
+        let altTitle = (currentLocation.locality.isEmpty) ? "\(currentLocation.adminArea)" : "\(currentLocation.locality), "
+        var adminArea = (currentLocation.municipality.isEmpty) ? "\(altTitle)" : "\(currentLocation.municipality), "
+        adminArea = (adminArea.isEmpty) ? "\(currentLocation.country)" : "\(adminArea)"
+        self.title = "\(adminArea)"
+
         let listVC = viewController as! CitiesViewController
         listVC.dismissViewControllerAnimated(true, completion: { [unowned self] () -> () in
             self.getWeatherForLocation(city.location)
