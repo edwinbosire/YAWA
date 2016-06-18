@@ -25,16 +25,16 @@ class Location: NSManagedObject {
 	
 	class func locationWithPlacemark(placemark: CLPlacemark) -> Location {
 		
-		let locality = (placemark.locality != nil) ? placemark.locality : ""
-		let postalCode = (placemark.postalCode != nil) ? placemark.postalCode : ""
-		let administrativeArea = (placemark.administrativeArea != nil) ? placemark.administrativeArea : ""
-		let country = (placemark.country != nil) ? placemark.country : ""
-		let municipality = (placemark.subLocality != nil) ? placemark.subLocality : ""
-		let name = (placemark.name.isEmpty) ? "" : placemark.name
+		let locality = (placemark.locality != nil) ? placemark.locality! : ""
+		let postalCode = (placemark.postalCode != nil) ? placemark.postalCode! : ""
+		let administrativeArea = (placemark.administrativeArea != nil) ? placemark.administrativeArea! : ""
+		let country = (placemark.country != nil) ? placemark.country! : ""
+		let municipality = (placemark.subLocality != nil) ? placemark.subLocality! : ""
+        let name = (placemark.name != nil) ? placemark.name! : ""
 		
-		var coordinates:CLLocationCoordinate2D = placemark.location.coordinate
+		let coordinates:CLLocationCoordinate2D = (placemark.location?.coordinate)!
 		
-		var location = Location.createNewLocation()
+		let location = Location.createNewLocation()
 		
 		location.locality = locality
 		location.municipality = municipality

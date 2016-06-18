@@ -72,6 +72,10 @@
 		96DC240F1B091D5E003FF892 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96DC240D1B091D5E003FF892 /* LaunchScreen.xib */; };
 		96DC241B1B091D5F003FF892 /* YAWA_WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC241A1B091D5F003FF892 /* YAWA_WeatherTests.swift */; };
 		96DC242A1B092AE3003FF892 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC24291B092AE3003FF892 /* Constants.swift */; };
+		C35EC59D1D15775900D8702F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EC59C1D15775900D8702F /* Network.swift */; };
+		C35EC59E1D15775900D8702F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EC59C1D15775900D8702F /* Network.swift */; };
+		C35EC5A11D15898700D8702F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EC5A01D15898700D8702F /* Utilities.swift */; };
+		C35EC5A21D15898700D8702F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35EC5A01D15898700D8702F /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +130,8 @@
 		96DC24191B091D5F003FF892 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96DC241A1B091D5F003FF892 /* YAWA_WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YAWA_WeatherTests.swift; sourceTree = "<group>"; };
 		96DC24291B092AE3003FF892 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C35EC59C1D15775900D8702F /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		C35EC5A01D15898700D8702F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 		964F32231B1F9A3A008A43BF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C35EC5A01D15898700D8702F /* Utilities.swift */,
 				969603661B25DEA900A6A690 /* UIImage+Tinting.swift */,
 				964F321F1B1F9A33008A43BF /* UIColor+FlatColors.h */,
 				964F32201B1F9A33008A43BF /* UIColor+FlatColors.m */,
@@ -194,10 +201,10 @@
 		96DC23F61B091D5E003FF892 = {
 			isa = PBXGroup;
 			children = (
-				96A74F001B2F70C800CD5B03 /* CoreData.framework */,
 				96DC24011B091D5E003FF892 /* YAWA-Weather */,
 				96DC24171B091D5F003FF892 /* YAWA-WeatherTests */,
 				96DC24001B091D5E003FF892 /* Products */,
+				96A74F001B2F70C800CD5B03 /* CoreData.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,6 +224,7 @@
 				96DC24291B092AE3003FF892 /* Constants.swift */,
 				96C134631B2C61A70014759A /* Protocol */,
 				96DC24241B091E32003FF892 /* Controller */,
+				C35EC59F1D15776100D8702F /* Client */,
 				96DC24271B091E7A003FF892 /* Model */,
 				96DC24281B091E87003FF892 /* View */,
 				96DC240B1B091D5E003FF892 /* Images.xcassets */,
@@ -290,6 +298,14 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		C35EC59F1D15776100D8702F /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				C35EC59C1D15775900D8702F /* Network.swift */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -334,6 +350,7 @@
 		96DC23F71B091D5E003FF892 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Edwin Bosire";
 				TargetAttributes = {
@@ -421,7 +438,9 @@
 				96A74F341B2F837F00CD5B03 /* Forecast.swift in Sources */,
 				969603671B25DEA900A6A690 /* UIImage+Tinting.swift in Sources */,
 				96DC24071B091D5E003FF892 /* ViewController.swift in Sources */,
+				C35EC5A11D15898700D8702F /* Utilities.swift in Sources */,
 				964F32211B1F9A33008A43BF /* UIColor+FlatColors.m in Sources */,
+				C35EC59D1D15775900D8702F /* Network.swift in Sources */,
 				96DC24051B091D5E003FF892 /* AppDelegate.swift in Sources */,
 				96C1343C1B2714C90014759A /* CitiesViewController.swift in Sources */,
 				96A74EF81B2F4E8900CD5B03 /* Location.swift in Sources */,
@@ -440,9 +459,11 @@
 			files = (
 				96C134521B2748F20014759A /* AppDelegate.swift in Sources */,
 				964F32221B1F9A33008A43BF /* UIColor+FlatColors.m in Sources */,
+				C35EC5A21D15898700D8702F /* Utilities.swift in Sources */,
 				96C1345C1B2A59D30014759A /* SearchDisplayViewController.swift in Sources */,
 				96C134401B271C910014759A /* CitiesTableViewCell.swift in Sources */,
 				96C1343D1B2714C90014759A /* CitiesViewController.swift in Sources */,
+				C35EC59E1D15775900D8702F /* Network.swift in Sources */,
 				96A74F3B1B2F96EB00CD5B03 /* ViewAnimations.swift in Sources */,
 				96C134621B2C61A20014759A /* LocationSearchDelegate.swift in Sources */,
 				96A74EEF1B2F4B4F00CD5B03 /* StoreManager.swift in Sources */,

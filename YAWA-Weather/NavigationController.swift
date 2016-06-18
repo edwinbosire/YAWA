@@ -14,10 +14,10 @@ class NavigationController: UINavigationController {
         super.viewDidLoad()
 
         self.navigationBar.setBackgroundImage(UIImage(named: "navigationBarBackground"), forBarMetrics: .Default)
-		self.navigationBar.shadowImage = UIImage.new()
+		self.navigationBar.shadowImage = UIImage()
 		self.navigationBar.translucent = false
 		
-		var navigationBarAppearance = UINavigationBar.appearance()
+		let navigationBarAppearance = UINavigationBar.appearance()
 		navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor(),
 			NSFontAttributeName : UIFont(name: "Open Sans", size: 16.0)!]
     }
@@ -26,7 +26,7 @@ class NavigationController: UINavigationController {
 
 extension UINavigationBar {
 	public override func sizeThatFits(size: CGSize) -> CGSize {
-		var newsize: CGSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width, 60)
+		let newsize: CGSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width, 60)
 		return newsize
 	}
 }

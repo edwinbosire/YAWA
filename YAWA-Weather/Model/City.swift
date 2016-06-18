@@ -33,7 +33,7 @@ class City: NSManagedObject {
 		if let aCity = cities.first {
 			return aCity
 		}else {
-			var newCity = City.createNewCity()
+			let newCity = City.createNewCity()
 			newCity.index = cities.count + 1
 			return newCity
 		}

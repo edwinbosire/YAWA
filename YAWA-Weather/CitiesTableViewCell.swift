@@ -22,7 +22,6 @@ class CitiesTableViewCell: UITableViewCell {
 		self.titleLabel.text = ""
 		self.timeLabel.text = ""
 		self.temperatureLabel.text = ""
-//		self.weatherIcon.image = UIImage(named: "partly-cloudy")
 	}
 	
 }

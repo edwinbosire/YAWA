@@ -9,22 +9,9 @@
 import Foundation
 import UIKit
 
-
-func springWithDelay(duration: NSTimeInterval, #delay: NSTimeInterval, #animations: (() -> Void)!) {
+func springWithDelay(duration: NSTimeInterval, delay: NSTimeInterval, dampingRation: CGFloat = 0.7,  animations: (() -> Void)!) {
 	
-	UIView.animateWithDuration(duration, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: nil, animations: {
-		
-		animations()
-		
-		}, completion: { finished in
-			
-	})
-	
-}
-
-func springWithDelay(duration: NSTimeInterval, #delay: NSTimeInterval, #dampingRation: CGFloat,  #animations: (() -> Void)!) {
-	
-	UIView.animateWithDuration(duration, delay: delay, usingSpringWithDamping: dampingRation, initialSpringVelocity: 0.8, options: nil, animations: {
+	UIView.animateWithDuration(duration, delay: delay, usingSpringWithDamping: dampingRation, initialSpringVelocity: 0.8, options: .CurveEaseOut, animations: {
 		
 		animations()
 		

@@ -23,8 +23,7 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 		super.viewDidLoad()
 		
 		self.title = "Your Cities"
-		self.tableView.tableFooterView = UIView.new()
-		
+		self.tableView.tableFooterView = UIView(frame: CGRectZero)		
 		reloadData()
 	}
 	
@@ -56,7 +55,7 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		var cell: CitiesTableViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CitiesTableViewCell
+		let cell: CitiesTableViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CitiesTableViewCell
 		let city = cities[indexPath.row]
 		
 		var locationName = city.location.municipality
@@ -92,7 +91,7 @@ class CitiesViewController: UIViewController, UITableViewDataSource, UITableView
 	
 	func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
 		
-		var itemToMove = cities[sourceIndexPath.row]
+		let itemToMove = cities[sourceIndexPath.row]
 		itemToMove.index = destinationIndexPath.row
 		
 		cities.removeAtIndex(sourceIndexPath.row)

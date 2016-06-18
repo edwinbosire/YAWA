@@ -31,7 +31,7 @@ class Forecast: NSManagedObject {
 
 	class func forecastWithDictionary(weatherDictionary: NSDictionary) -> Forecast {
 		
-		var forecast = Forecast.createNewForecast()
+		let forecast = Forecast.createNewForecast()
 		
 		let currentWeather = weatherDictionary["currently"] as! NSDictionary
 		
@@ -43,7 +43,7 @@ class Forecast: NSManagedObject {
 		forecast.icon = currentWeather["icon"] as! String
 
 		let myWeeklyForecast = Forecast.weeklyForecastFromDictionary(weatherDictionary)
-		var set = NSSet(array: myWeeklyForecast)
+		let set = NSSet(array: myWeeklyForecast)
 		forecast.weeklyForecast = set
 	
 		let windDirectionDegrees  = currentWeather["windBearing"] as! Int

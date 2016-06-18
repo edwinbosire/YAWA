@@ -29,18 +29,18 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 
 	}
 	
-	func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-		locationManager.stopUpdatingLocation()
-		
-		if ((error) != nil) {
-			if (seenError == false) {
-				seenError = true
-				print(error)
-			}
-		}
-	}
-	
-	func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
+
+        locationManager.stopUpdatingLocation()
+        
+            if (seenError == false) {
+                seenError = true
+                print(error)
+            }
+    }
+
+    
+	func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
 			var shouldAllow = false
 		
 		switch status {
@@ -63,9 +63,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 		case .Denied:
 			locationStatus = "User denied access to location"
 			break
-		default:
-			locationStatus = "Status not determined"
-			break
 		}
 		
 		if (shouldAllow == true) {
@@ -73,32 +70,31 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 			} else {
 				
 				let error = NSError.init(domain: "Mercury", code: 0001, userInfo: ["userInfo" : locationStatus])
-				
 				if locationBlock != nil {
-					
 					locationBlock!(nil, error)
 				}
 			}
 	}
 
 
-	func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-		
-		CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemark, error) -> Void in
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if let location = manager.location {
+            
+		CLGeocoder().reverseGeocodeLocation(location, completionHandler: { [unowned self] (placemark, error) -> Void in
 			self.locationManager.stopUpdatingLocation()
 			
-			
-
-			if placemark != nil {
+			if  placemark?.count > 0 {
 				
-				let myLocation = placemark[0] as! CLPlacemark
+				let myLocation = (placemark?.first)!
 				let locationItem = Location.locationWithPlacemark(myLocation)
 				
-				if self.locationBlock != nil {
-					self.locationBlock!(locationItem, nil)
+				if let locationBlock = self.locationBlock  {
+					locationBlock(locationItem, nil)
 				}
 			}
 		})
+        }
 		
 		if (locationLock == false) {
 			locationLock = true
@@ -114,7 +110,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 			
 			if((error) != nil){
 				
-				println("Error", error)
+				print("Error", error)
 			}
 				
 			else if let allPlacemarks = placemarks {
@@ -123,13 +119,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 				
 				for aMark in allPlacemarks {
 					
-					var placemark:CLPlacemark = aMark as! CLPlacemark
+					let placemark:CLPlacemark = aMark as CLPlacemark
 					let locationItem = Location.locationWithPlacemark(placemark)
 					
 					searchResultsLocations.append(locationItem)
 					completionHandler(searchResultsLocations, error)
 					
-					println("\(placemark.administrativeArea)")
+					print("\(placemark.administrativeArea)")
 					
 				}
 			}

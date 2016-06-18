@@ -26,7 +26,7 @@ class Daily: NSManagedObject {
 
 	class func dailyWithDictionary(dailyForcast: NSDictionary) ->Daily {
 		
-		var daily = Daily.createNewDailyForecast()
+		let daily = Daily.createNewDailyForecast()
 		
 		daily.temperatureMax = dailyForcast["temperatureMax"] as! Int
 		daily.temperatureMin = dailyForcast["temperatureMin"] as! Int

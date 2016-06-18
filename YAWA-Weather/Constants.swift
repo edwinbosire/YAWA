@@ -42,7 +42,7 @@ func weatherIconFromString(stringIcon: String) -> UIImage {
 		imageName = "default"
 	}
 	
-	var iconName = UIImage(named: imageName)
+	let iconName = UIImage(named: imageName)
 	return iconName!
 }
 
@@ -52,7 +52,6 @@ func weeekDateStringFromUnixtime(unixTime: Int) -> String {
 	let weatherDate = NSDate(timeIntervalSince1970: timeInSeconds)
 	
 	let dateFormatter = NSDateFormatter()
-	//dateFormatter.timeStyle = .MediumStyle
 	dateFormatter.dateFormat = "EEE"
 	
 	return dateFormatter.stringFromDate(weatherDate)

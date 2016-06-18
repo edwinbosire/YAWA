@@ -42,7 +42,6 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 		
 		searchController.active = false
 		tableData = []
-//		navigationController?.dismissViewControllerAnimated(true, completion: nil)
 		delegate?.dismissSearchViewController(self)
 	}
 	
@@ -59,8 +58,6 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 	
 	 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		var section = indexPath.section
-		var row = indexPath.row
 		let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:"addCategoryCell")
 		cell.textLabel?.textAlignment = NSTextAlignment.Left
 		cell.textLabel?.textColor = UIColor.blackColor()
@@ -95,11 +92,13 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 		let selectedLocation = tableData[indexPath.row]
 		delegate?.didSelectLocation(selectedLocation)
 	}
+    
 	//MARK: - UISearchControllerDelegate
 	
 	func didPresentSearchController(searchController: UISearchController) {
 		searchController.searchBar.becomeFirstResponder()
 	}
+    
 	//MARK: UISearchResultsUpdater delegate
 	
 	func updateSearchResultsForSearchController(searchController: UISearchController) {
@@ -117,9 +116,9 @@ class SearchDisplayViewController: UIViewController, UITableViewDataSource, UITa
 		let locationManager = LocationManager.init()
 		
 		let searchTerms = searchController.searchBar.text
-		if ( count(searchTerms) > 1) {
+		if ( searchTerms?.characters.count > 1) {
 			
-			locationManager.searchForLocationWithName(searchTerms, completionHandler: { (searchResults, error) -> () in
+			locationManager.searchForLocationWithName(searchTerms!, completionHandler: { (searchResults, error) -> () in
 				
 				self.tableData.removeAll(keepCapacity: false)
 				self.tableData = searchResults as [Location]
