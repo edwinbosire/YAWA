@@ -31,4 +31,4 @@ The UI improvements were done on a different day. Take a look at the **TODO** li
 Lovingly created by [Edwin B](http://www.twitter.com/edwinbosire) 
 
 
-[demo]: https://github.com/edwinbosire/YAWA/tree/master/Assets/demo.gif
+[demo]: https://github.com/edwinbosire/YAWA/blob/master/Assets/demo.gif
